@@ -22,26 +22,6 @@
           ]
         }
       },
-      "navigation_items": {
-        "type": "Group",
-        "config": {
-          "label": "Navigation Items",
-          "repeat": true,
-          "fields": {
-            "navigation_item_link_to": {
-              "type": "Link",
-              "config": {
-                "label": "Navigation Item Link to",
-                "placeholder": "Link de Navegacion global",
-                "select": null,
-                "allowTargetBlank": true,
-                "allowText": true,
-                "repeat": true
-              }
-            }
-          }
-        }
-      },
       "buttonlink": {
         "type": "Link",
         "config": {
@@ -65,6 +45,17 @@
         "config": {
           "label": "Meta Description",
           "placeholder": "meta description for SEO"
+        }
+      },
+      "navigation_link": {
+        "type": "Link",
+        "config": {
+          "label": "Navigation Link",
+          "placeholder": "Link de Navegacion",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": true
         }
       }
     }

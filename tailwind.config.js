@@ -38,6 +38,9 @@ module.exports = {
       borderRadius: {
         cta: "2.188rem", // 35px
       },
+      spacing: {
+        "nav-heigth": "var(--navigation-height)",
+      },
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],

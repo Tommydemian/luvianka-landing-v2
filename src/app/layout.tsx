@@ -1,7 +1,6 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { PrismicPreview } from "@prismicio/next";
-import { repositoryName } from "@/prismicio";
-import { createClient } from "@prismicio/client";
+import { repositoryName, createClient } from "@/prismicio";
 import "./app.css";
 
 import { Oswald, Source_Sans_3, Grand_Hotel } from "next/font/google";
@@ -29,7 +28,7 @@ const grand_hotel = Grand_Hotel({
 import { Header } from "@/app/components/layout/Header";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient(repositoryName);
+  const client = createClient();
   const page = await client.getSingle("settings");
   return {
     title: page.data.site_title || "Luvianka",

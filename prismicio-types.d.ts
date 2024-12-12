@@ -4,6 +4,147 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CalidadDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Calidad documents
+ */
+interface CalidadDocumentData {
+  /**
+   * Titulo de prueba field in *Calidad*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Tit
+   * - **API ID Path**: calidad.titulo_de_prueba
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo_de_prueba: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Calidad*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: calidad.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CalidadDocumentDataSlicesSlice> /**
+   * Meta Title field in *Calidad*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: calidad.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Calidad*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: calidad.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Calidad*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: calidad.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Calidad document from Prismic
+ *
+ * - **API ID**: `calidad`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CalidadDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CalidadDocumentData>,
+    "calidad",
+    Lang
+  >;
+
+type EmpresaDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Empresa documents
+ */
+interface EmpresaDocumentData {
+  /**
+   * Slice Zone field in *Empresa*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: empresa.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<EmpresaDocumentDataSlicesSlice> /**
+   * Meta Title field in *Empresa*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: empresa.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Empresa*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: empresa.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Empresa*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: empresa.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Empresa document from Prismic
+ *
+ * - **API ID**: `empresa`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EmpresaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<EmpresaDocumentData>,
+    "empresa",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice = never;
 
 /**
@@ -137,20 +278,70 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type ProductosDocumentDataSlicesSlice = never;
+
 /**
- * Item in *settings → Navigation Items*
+ * Content for Productos documents
  */
-export interface SettingsDocumentDataNavigationItemsItem {
+interface ProductosDocumentData {
   /**
-   * Navigation Item Link to field in *settings → Navigation Items*
+   * Slice Zone field in *Productos*
    *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link de Navegacion global
-   * - **API ID Path**: settings.navigation_items[].navigation_item_link_to
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: productos.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  navigation_item_link_to: prismic.Repeatable<prismic.LinkField>;
+  slices: prismic.SliceZone<ProductosDocumentDataSlicesSlice> /**
+   * Meta Title field in *Productos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: productos.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Productos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: productos.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Productos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: productos.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
 }
+
+/**
+ * Productos document from Prismic
+ *
+ * - **API ID**: `productos`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductosDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductosDocumentData>,
+    "productos",
+    Lang
+  >;
 
 /**
  * Content for settings documents
@@ -166,19 +357,6 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<"mobile_logo">;
-
-  /**
-   * Navigation Items field in *settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation_items[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  navigation_items: prismic.GroupField<
-    Simplify<SettingsDocumentDataNavigationItemsItem>
-  >;
 
   /**
    * buttonLink field in *settings*
@@ -212,6 +390,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
+  /**
+   * Navigation Link field in *settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link de Navegacion
+   * - **API ID Path**: settings.navigation_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation_link: prismic.Repeatable<prismic.LinkField>;
 }
 
 /**
@@ -230,7 +419,13 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | CalidadDocument
+  | EmpresaDocument
+  | HomeDocument
+  | PageDocument
+  | ProductosDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -298,15 +493,23 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CalidadDocument,
+      CalidadDocumentData,
+      CalidadDocumentDataSlicesSlice,
+      EmpresaDocument,
+      EmpresaDocumentData,
+      EmpresaDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ProductosDocument,
+      ProductosDocumentData,
+      ProductosDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
-      SettingsDocumentDataNavigationItemsItem,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,

@@ -6,24 +6,38 @@
   --red-base: #e12c48; /* CTA, titles */
   --red-deep: #d61c1c; /* backgrounds */
   --red-bright: #ff2221; /* footer titles */
+
+  --navigation-height: 5.25rem;
 }
 @layer components {
   .container {
     width: min(100% - 1.5rem, 85rem);
     margin-inline: auto;
+    max-width: unset;
   }
 
   .hamb-menu__transition {
     transition: opacity 750ms ease-in 0.25ms;
   }
 
-  .mobile-w-full {
-    max-width: calc(100% - 1.5rem);
+  .cta-base {
+    @apply cta-padding inline-flex max-h-[2.938rem] items-center justify-center rounded-cta font-src-sans font-bold uppercase text-white outline-none;
+  }
+
+  .cta-primary {
+    @apply bg-red-primary;
+  }
+
+  .cta-secondary {
+    @apply bg-black;
   }
 }
 
 @layer utilities {
   .cta-padding {
     padding: 1em 1.75em;
+  }
+  .transition-height {
+    transition: height 0.3ms ease-in-out;
   }
 }

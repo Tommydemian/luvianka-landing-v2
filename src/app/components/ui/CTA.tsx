@@ -17,19 +17,8 @@ export const CTA: React.FC<CTAProps> = ({
   return (
     <PrismicNextLink
       className={cn(
-        "text-white",
-        "rounded-cta",
-        variant === "primary" ? "bg-red-primary" : "bg-black",
-        "font-src-sans",
-        "cta-padding",
-        "uppercase",
-        "font-bold",
-        "flex",
-        "inline-flex",
-        "justify-center",
-        "items-center",
-        "outline-none",
-        "max-h-[2.938rem]",
+        "cta-base",
+        variant === "primary" ? "cta-primary" : "cta-secondary",
         className,
       )}
       field={field}
