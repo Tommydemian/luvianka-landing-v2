@@ -1,0 +1,72 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "label": "settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {
+            "width": 300
+          },
+          "thumbnails": [
+            {
+              "name": "mobile_logo",
+              "width": 150,
+              "height": null
+            }
+          ]
+        }
+      },
+      "navigation_items": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Items",
+          "repeat": true,
+          "fields": {
+            "navigation_item_link_to": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Item Link to",
+                "placeholder": "Link de Navegacion global",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            }
+          }
+        }
+      },
+      "buttonlink": {
+        "type": "Link",
+        "config": {
+          "label": "buttonLink",
+          "placeholder": "Link del button en el Header",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": true
+        }
+      },
+      "site_title": {
+        "type": "Text",
+        "config": {
+          "label": "Site title",
+          "placeholder": "Titulo del sitio"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "meta description for SEO"
+        }
+      }
+    }
+  }
+}

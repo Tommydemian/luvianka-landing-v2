@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --red-base: #e12c48; /* CTA, titles */
+  --red-deep: #d61c1c; /* backgrounds */
+  --red-bright: #ff2221; /* footer titles */
+}
+@layer components {
+  .container {
+    width: min(100% - 1.5rem, 85rem);
+    margin-inline: auto;
+  }
+
+  .hamb-menu__transition {
+    transition: opacity 750ms ease-in 0.25ms;
+  }
+
+  .mobile-w-full {
+    max-width: calc(100% - 1.5rem);
+  }
+}
+
+@layer utilities {
+  .cta-padding {
+    padding: 1em 1.75em;
+  }
+}
