@@ -9,6 +9,11 @@
 
   --navigation-height: 5.25rem;
 }
+
+* {
+  outline: 1px solid lime;
+}
+
 @layer components {
   .container {
     width: min(100% - 1.5rem, 85rem);

@@ -19,7 +19,7 @@ type NavigationProps = {
 const linkStyles = {
   base: cn(
     // Base styles
-    "relative py-2 px-1",
+    "relative",
     "text-sm capitalize tracking-wide",
     "transition-all duration-200",
 
@@ -54,8 +54,8 @@ export const Navigation: React.FC<NavigationProps> = ({
       className={cn(
         // Layout & Positioning
         "outline-1 outline-offset-1 outline-red-500",
-        "!absolute inset-0 top-nav-heigth",
-        "md:relative md:top-0",
+        "absolute inset-0 top-nav-heigth",
+        "md:!relative md:inset-auto md:top-0",
 
         // Mobile-specific
         "z-50",
@@ -67,11 +67,11 @@ export const Navigation: React.FC<NavigationProps> = ({
         "font-src-sans",
 
         // Base state for mobile - no transitions
-        "max-md:translate-x-[100%] max-md:opacity-0",
+        "max-md:opacity-0",
 
         // Open state with transitions
         isMenuOpen &&
-          "max-md:translate-x-0 max-md:opacity-100 max-md:transition-all max-md:duration-300",
+          "max-md:opacity-100 max-md:transition-all max-md:duration-300",
       )}
     >
       <Container>
