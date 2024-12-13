@@ -26,6 +26,7 @@ const grand_hotel = Grand_Hotel({
 
 // components:
 import { Header } from "@/app/components/layout/Header";
+import { Footer } from "./components/layout/Footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>

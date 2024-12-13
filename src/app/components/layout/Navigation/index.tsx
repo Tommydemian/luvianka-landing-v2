@@ -16,28 +16,6 @@ type NavigationProps = {
   toggleMobileMenu: () => void;
 };
 
-const linkStyles = {
-  base: cn(
-    // Base styles
-    "relative",
-    "text-sm capitalize tracking-wide",
-    "transition-all duration-200",
-
-    // Default text color and hover
-    "text-black hover:text-black",
-
-    // Underline effect
-    "after:absolute after:left-0 after:bottom-0",
-    "after:h-0.5 after:w-0",
-    "after:bg-red-primary",
-    "after:transition-all after:duration-200",
-    "hover:after:w-full",
-
-    // Mobile specific
-    "md:text-base",
-  ),
-  active: cn("text-red-primary", "after:w-full"),
-};
 export const Navigation: React.FC<NavigationProps> = ({
   navItems,
   isMenuOpen,
@@ -51,9 +29,10 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav
+      aria-label="Main Navigation"
       className={cn(
         // Layout & Positioning
-        "outline-1 outline-offset-1 outline-red-500",
+        "bg-white outline-1 outline-offset-1 outline-red-500",
         "absolute inset-0 top-nav-heigth",
         "md:!relative md:inset-auto md:top-0",
 
@@ -87,10 +66,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <li role="listitem" key={link.key}>
                   <PrismicNextLink
                     field={link}
-                    className={cn(
-                      linkStyles.base,
-                      isActive && linkStyles.active,
-                    )}
+                    className={cn("nav-link", isActive && "nav-link--active")}
                   >
                     {link.text}
                   </PrismicNextLink>

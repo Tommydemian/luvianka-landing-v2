@@ -22,6 +22,31 @@
           ]
         }
       },
+      "red_deer_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Red-Deer Logo",
+          "constraint": {
+            "width": 300
+          },
+          "thumbnails": [
+            {
+              "name": "mobile_red_deer_logo",
+              "width": 150,
+              "height": null
+            }
+          ]
+        }
+      },
+      "tagline": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Tagline",
+          "placeholder": "Texto debajo de los logos en el Footer",
+          "allowTargetBlank": true,
+          "multi": "preformatted,heading1,heading2,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,paragraph,heading3"
+        }
+      },
       "buttonlink": {
         "type": "Link",
         "config": {
@@ -56,6 +81,81 @@
           "allowTargetBlank": true,
           "allowText": true,
           "repeat": true
+        }
+      },
+      "contact_section": {
+        "type": "Group",
+        "config": {
+          "label": "Contact Section",
+          "repeat": true,
+          "fields": {
+            "section_title": {
+              "type": "Text",
+              "config": {
+                "label": "Section Title",
+                "placeholder": "Titulo de la seccion "
+              }
+            },
+            "direction": {
+              "type": "Text",
+              "config": {
+                "label": "Direction",
+                "placeholder": "Direccion"
+              }
+            },
+            "phone_number_1": {
+              "type": "Text",
+              "config": {
+                "label": "Phone number 1",
+                "placeholder": "Numero de Telefono 1 "
+              }
+            },
+            "phone_number_2": {
+              "type": "Text",
+              "config": {
+                "label": "Phone Number 2",
+                "placeholder": "Numero de Telefono 2"
+              }
+            },
+            "phone_number_3": {
+              "type": "Text",
+              "config": {
+                "label": "Phone Number 3",
+                "placeholder": "Numero de Telefono 3"
+              }
+            },
+            "email": {
+              "type": "Link",
+              "config": {
+                "label": "Email",
+                "placeholder": "Direccion de correo electronico",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            }
+          }
+        }
+      },
+      "social_media_link": {
+        "type": "Link",
+        "config": {
+          "label": "Social Media Link",
+          "placeholder": "Link Redes Sociales",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": true
+        }
+      },
+      "legal": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Legal ",
+          "placeholder": "@ Todos los derechos reservados",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }

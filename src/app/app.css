@@ -7,16 +7,14 @@
   --red-deep: #d61c1c; /* backgrounds */
   --red-bright: #ff2221; /* footer titles */
 
-  --navigation-height: 5.25rem;
-}
+  --gray-base: #2d2d2d;
 
-* {
-  outline: 1px solid lime;
+  --navigation-height: 5.25rem;
 }
 
 @layer components {
   .container {
-    width: min(100% - 1.5rem, 85rem);
+    width: min(100% - 2rem, 85rem);
     margin-inline: auto;
     max-width: unset;
   }
@@ -36,6 +34,27 @@
   .cta-secondary {
     @apply bg-black;
   }
+
+  .nav-link {
+    @apply relative text-sm capitalize tracking-wide md:text-base;
+    @apply transition-all duration-200;
+    /* Base and hover */
+    @apply text-black hover:text-red-primary;
+    /* Focus - keyboard navigation */
+    @apply focus:text-red-primary focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2;
+    /* Active - click state */
+    @apply active:text-red-secondary;
+    /* Focus Within - container focus */
+    @apply focus-within:text-red-primary;
+  }
+
+  .footer-email-link {
+    @apply text-red-accent transition-colors duration-200 hover:text-white;
+  }
+
+  .nav-link--active {
+    @apply text-red-primary;
+  }
 }
 
 @layer utilities {
@@ -44,5 +63,9 @@
   }
   .transition-height {
     transition: height 0.3ms ease-in-out;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -344,6 +344,71 @@ export type ProductosDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *settings → Contact Section*
+ */
+export interface SettingsDocumentDataContactSectionItem {
+  /**
+   * Section Title field in *settings → Contact Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: settings.contact_section[].section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Direction field in *settings → Contact Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Direccion
+   * - **API ID Path**: settings.contact_section[].direction
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  direction: prismic.KeyTextField;
+
+  /**
+   * Phone number 1 field in *settings → Contact Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Numero de Telefono 1
+   * - **API ID Path**: settings.contact_section[].phone_number_1
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number_1: prismic.KeyTextField;
+
+  /**
+   * Phone Number 2 field in *settings → Contact Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Numero de Telefono 2
+   * - **API ID Path**: settings.contact_section[].phone_number_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number_2: prismic.KeyTextField;
+
+  /**
+   * Phone Number 3 field in *settings → Contact Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Numero de Telefono 3
+   * - **API ID Path**: settings.contact_section[].phone_number_3
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number_3: prismic.KeyTextField;
+
+  /**
+   * Email field in *settings → Contact Section*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Direccion de correo electronico
+   * - **API ID Path**: settings.contact_section[].email
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  email: prismic.Repeatable<prismic.LinkField>;
+}
+
+/**
  * Content for settings documents
  */
 interface SettingsDocumentData {
@@ -357,6 +422,28 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<"mobile_logo">;
+
+  /**
+   * Red-Deer Logo field in *settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.red_deer_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  red_deer_logo: prismic.ImageField<"mobile_red_deer_logo">;
+
+  /**
+   * Tagline field in *settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Texto debajo de los logos en el Footer
+   * - **API ID Path**: settings.tagline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tagline: prismic.RichTextField;
 
   /**
    * buttonLink field in *settings*
@@ -401,6 +488,41 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   navigation_link: prismic.Repeatable<prismic.LinkField>;
+
+  /**
+   * Contact Section field in *settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.contact_section[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  contact_section: prismic.GroupField<
+    Simplify<SettingsDocumentDataContactSectionItem>
+  >;
+
+  /**
+   * Social Media Link field in *settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link Redes Sociales
+   * - **API ID Path**: settings.social_media_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  social_media_link: prismic.Repeatable<prismic.LinkField>;
+
+  /**
+   * Legal  field in *settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: @ Todos los derechos reservados
+   * - **API ID Path**: settings.legal
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  legal: prismic.RichTextField;
 }
 
 /**
@@ -510,6 +632,7 @@ declare module "@prismicio/client" {
       ProductosDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
+      SettingsDocumentDataContactSectionItem,
       AllDocumentTypes,
       RichTextSlice,
       RichTextSliceDefaultPrimary,

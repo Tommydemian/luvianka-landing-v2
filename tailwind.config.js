@@ -30,6 +30,7 @@ module.exports = {
         },
         surface: {
           red: "var(--red-deep)",
+          gray: "var(--gray-base)",
         },
         text: {
           highlight: "var(--red-bright)",
