@@ -1,0 +1,33 @@
+{
+  "id": "product_showcase",
+  "type": "SharedSlice",
+  "name": "ProductShowcase",
+  "description": "ProductShowcase",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "decorative_text": {
+          "type": "Text",
+          "config": {
+            "label": "Decorative Text",
+            "placeholder": "Texto Decorativo"
+          }
+        },
+        "main_heading": {
+          "type": "Text",
+          "config": {
+            "label": "Main Heading",
+            "placeholder": "Titulo de la seccion "
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

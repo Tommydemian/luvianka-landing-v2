@@ -80,7 +80,7 @@ export type CalidadDocument<Lang extends string = string> =
     Lang
   >;
 
-type EmpresaDocumentDataSlicesSlice = never;
+type EmpresaDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Empresa documents
@@ -133,13 +133,13 @@ interface EmpresaDocumentData {
  * Empresa document from Prismic
  *
  * - **API ID**: `empresa`
- * - **Repeatable**: `false`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type EmpresaDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
+  prismic.PrismicDocumentWithUID<
     Simplify<EmpresaDocumentData>,
     "empresa",
     Lang
@@ -206,7 +206,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Page documents
@@ -550,48 +550,178 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
- * Primary content in *RichText → Default → Primary*
+ * Primary content in *Hero → Default → Primary*
  */
-export interface RichTextSliceDefaultPrimary {
+export interface HeroSliceDefaultPrimary {
   /**
-   * Content field in *RichText → Default → Primary*
+   * Full Screen Background Image field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.full_screen_background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  full_screen_background_image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo del Hero
+   * - **API ID Path**: hero.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Hero Description field in *Hero → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.default.primary.content
+   * - **Placeholder**: Descripcion del Hero
+   * - **API ID Path**: hero.default.primary.hero_description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  content: prismic.RichTextField;
+  hero_description: prismic.RichTextField;
+
+  /**
+   * Hero Link field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link/Button del Hero
+   * - **API ID Path**: hero.default.primary.hero_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  hero_link: prismic.Repeatable<prismic.LinkField>;
 }
 
 /**
- * Default variation for RichText Slice
+ * Default variation for Hero Slice
  *
  * - **API ID**: `default`
- * - **Description**: RichText
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
+export type HeroSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<RichTextSliceDefaultPrimary>,
+  Simplify<HeroSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *RichText*
+ * Primary content in *Hero → Hero - With Gradient  → Primary*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+export interface HeroSliceHeroWithGradientPrimary {
+  /**
+   * Full Screen Background Image field in *Hero → Hero - With Gradient  → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.heroWithGradient.primary.full_screen_background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  full_screen_background_image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Hero → Hero - With Gradient  → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo del Hero
+   * - **API ID Path**: hero.heroWithGradient.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Hero Description field in *Hero → Hero - With Gradient  → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion del Hero
+   * - **API ID Path**: hero.heroWithGradient.primary.hero_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_description: prismic.RichTextField;
+}
 
 /**
- * RichText Shared Slice
+ * Hero - With Gradient  variation for Hero Slice
  *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
+ * - **API ID**: `heroWithGradient`
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
+export type HeroSliceHeroWithGradient = prismic.SharedSliceVariation<
+  "heroWithGradient",
+  Simplify<HeroSliceHeroWithGradientPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroSliceVariation = HeroSliceDefault | HeroSliceHeroWithGradient;
+
+/**
+ * Hero Shared Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Hero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
+ * Primary content in *ProductShowcase → Default → Primary*
+ */
+export interface ProductShowcaseSliceDefaultPrimary {
+  /**
+   * Decorative Text field in *ProductShowcase → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Texto Decorativo
+   * - **API ID Path**: product_showcase.default.primary.decorative_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  decorative_text: prismic.KeyTextField;
+
+  /**
+   * Main Heading field in *ProductShowcase → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: product_showcase.default.primary.main_heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_heading: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProductShowcase Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductShowcaseSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductShowcaseSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductShowcase*
+ */
+type ProductShowcaseSliceVariation = ProductShowcaseSliceDefault;
+
+/**
+ * ProductShowcase Shared Slice
+ *
+ * - **API ID**: `product_showcase`
+ * - **Description**: ProductShowcase
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductShowcaseSlice = prismic.SharedSlice<
+  "product_showcase",
+  ProductShowcaseSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -634,10 +764,16 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataContactSectionItem,
       AllDocumentTypes,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
+      HeroSlice,
+      HeroSliceDefaultPrimary,
+      HeroSliceHeroWithGradientPrimary,
+      HeroSliceVariation,
+      HeroSliceDefault,
+      HeroSliceHeroWithGradient,
+      ProductShowcaseSlice,
+      ProductShowcaseSliceDefaultPrimary,
+      ProductShowcaseSliceVariation,
+      ProductShowcaseSliceDefault,
     };
   }
 }

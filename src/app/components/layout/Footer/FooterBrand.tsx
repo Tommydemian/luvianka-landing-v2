@@ -16,10 +16,22 @@ export const FooterBrand: React.FC<FooterBrandProps> = ({
   tagline,
 }) => {
   return (
-    <aside className="space-y-9">
+    <aside className="space-y-6 md:-translate-y-8">
       <div className="flex flex-wrap items-baseline justify-between md:justify-start md:gap-x-8">
-        <PrismicNextImage className="h-[3.75rem] w-[7.188rem]" field={logo} />
-        <PrismicNextImage className="w-[7.188rem]" field={redDeerLogo} />
+        <PrismicNextImage
+          priority={false}
+          loading="lazy"
+          className="h-[3.75rem] w-[7.188rem]"
+          field={logo}
+          fallback="blur"
+        />
+        <PrismicNextImage
+          priority={false}
+          loading="lazy"
+          className="w-[7.188rem]"
+          field={redDeerLogo}
+          fallback="blur"
+        />
       </div>
       <PrismicRichText field={tagline} />
     </aside>

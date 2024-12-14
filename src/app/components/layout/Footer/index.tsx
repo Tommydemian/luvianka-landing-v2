@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { createClient } from "@/prismicio";
 
 import { Container } from "@/components/ui/Container";
@@ -7,6 +7,7 @@ import { FooterBrand } from "./FooterBrand";
 import { NavClientWrapper } from "./NavClientWrapper";
 import { FooterContact } from "./FooterContact";
 import { SubFooter } from "./SubFooter";
+import { FooterLoading } from "./FooterLoading";
 
 export const Footer = async () => {
   const client = createClient();
@@ -23,9 +24,9 @@ export const Footer = async () => {
   } = await client.getSingle("settings");
 
   return (
-    <footer className="mt-[40rem] bg-surface-gray text-white">
+    <footer className="mt-[40rem] bg-surface-gray text-base text-white md:text-lg">
       <Container>
-        <VSpace>
+        <VSpace lg>
           <div className="md:footer-grid grid grid-cols-1 gap-8">
             {/* Brand section */}
             <FooterBrand
@@ -35,7 +36,9 @@ export const Footer = async () => {
             />
 
             {/* Navigation */}
-            <NavClientWrapper navItems={navigation_link} />
+            <Suspense fallback={<FooterLoading />}>
+              <NavClientWrapper navItems={navigation_link} />
+            </Suspense>
             {/* Contact */}
             <FooterContact contactData={contact_section} />
           </div>

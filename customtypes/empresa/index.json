@@ -1,14 +1,27 @@
 {
   "format": "page",
   "id": "empresa",
+  "label": "Empresa",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
-      "slices": {
+      "uid": {
+        "type": "UID",
         "config": {
-          "choices": {}
-        },
+          "label": "UID"
+        }
+      },
+      "slices": {
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "hero": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -38,8 +51,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Empresa",
-  "repeatable": false,
-  "status": true
+  }
 }

@@ -25,7 +25,7 @@ export const FooterNavigation: React.FC<FooterNavigationProps> = ({
               <PrismicNextLink
                 field={link}
                 className={cn(
-                  "nav-link uppercase text-white",
+                  "nav-link text-base uppercase text-white md:text-[1.03rem]",
                   isActive && "nav-link--active",
                 )}
               >

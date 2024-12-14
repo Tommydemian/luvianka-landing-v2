@@ -1,0 +1,89 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "full_screen_background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Full Screen Background Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Titulo del Hero"
+          }
+        },
+        "hero_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero Description",
+            "placeholder": "Descripcion del Hero",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,hyperlink"
+          }
+        },
+        "hero_link": {
+          "type": "Link",
+          "config": {
+            "label": "Hero Link",
+            "placeholder": "Link/Button del Hero",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "heroWithGradient",
+      "name": "Hero - With Gradient ",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "full_screen_background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Full Screen Background Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Titulo del Hero"
+          }
+        },
+        "hero_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero Description",
+            "placeholder": "Descripcion del Hero",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,hyperlink"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

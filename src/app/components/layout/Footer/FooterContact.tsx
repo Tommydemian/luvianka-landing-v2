@@ -15,7 +15,7 @@ export const FooterContact: React.FC<FooterContactProps> = ({
       {contactData.map((el, index) => (
         <div key={el.section_title}>
           <h3
-            className="mb-4 text-red-secondary"
+            className="font-title mb-4 text-red-secondary"
             id={`contact-section-title-${index}`}
           >
             {el.section_title}

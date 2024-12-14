@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PrismicNextLink } from "@prismicio/next";
 import { cn } from "@/app/lib/utils";
 import { Container } from "../../ui/Container";
@@ -23,9 +23,15 @@ export const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const pathname = usePathname();
 
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   useEffect(() => {
     toggleMobileMenu();
-  }, [pathname]);
+  }, [pathname, hasMounted]);
 
   return (
     <nav
@@ -36,9 +42,6 @@ export const Navigation: React.FC<NavigationProps> = ({
         "absolute inset-0 top-nav-heigth",
         "md:!relative md:inset-auto md:top-0",
 
-        // Mobile-specific
-        "z-50",
-
         // Flex properties
         "flex gap-8",
 
@@ -48,9 +51,11 @@ export const Navigation: React.FC<NavigationProps> = ({
         // Base state for mobile - no transitions
         "max-md:opacity-0",
 
+        "max-md:pointer-events-none",
+
         // Open state with transitions
         isMenuOpen &&
-          "max-md:opacity-100 max-md:transition-all max-md:duration-300",
+          "z-50 max-md:pointer-events-auto max-md:opacity-100 max-md:transition-all max-md:duration-300",
       )}
     >
       <Container>
@@ -66,7 +71,10 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <li role="listitem" key={link.key}>
                   <PrismicNextLink
                     field={link}
-                    className={cn("nav-link", isActive && "nav-link--active")}
+                    className={cn(
+                      "nav-link md:text-lg",
+                      isActive && "nav-link--active",
+                    )}
                   >
                     {link.text}
                   </PrismicNextLink>
