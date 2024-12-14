@@ -9,12 +9,15 @@
 
   --gray-base: #2d2d2d;
 
+  --text-base: #05090c;
+
   --navigation-height: 5.25rem;
 }
 
 @layer base {
   body {
     font-family: var(--font-src-sans);
+    color: var(--text-base);
   }
 
   img {
@@ -119,5 +122,12 @@
     left: 50%;
 
     transform: translate(-50%, -50%);
+  }
+
+  .deco-svg {
+    position: relative;
+    width: 25%;
+    left: 40vw;
+    bottom: 0.1rem;
   }
 }

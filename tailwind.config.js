@@ -15,7 +15,9 @@ module.exports = {
       base: "1rem",
       lg: "1.125rem",
       xl: "1.25rem",
+      "xl.5": "1.5rem",
       "2xl": "2rem",
+      "3xl": "3rem",
       "4xl": "4rem",
     },
 
@@ -27,6 +29,7 @@ module.exports = {
 
         // Semantic
         title: ["var(--font-oswald)"],
+        decorative: ["var(--font-grand-hotel)"],
       },
       colors: {
         // Descriptive (Visual-based) approach
@@ -54,6 +57,7 @@ module.exports = {
       },
       spacing: {
         "nav-heigth": "var(--navigation-height)",
+        "size-30": "1.875rem",
         "size-60": "3.75rem",
       },
     },

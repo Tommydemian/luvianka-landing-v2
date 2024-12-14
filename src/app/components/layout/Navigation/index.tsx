@@ -62,7 +62,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <VSpace>
           <ul
             role="list"
-            className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-center"
+            className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-center"
           >
             {navItems?.map((link) => {
               const isActive =
