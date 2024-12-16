@@ -25,13 +25,10 @@ const ProductShowcase = ({ slice }: ProductShowcaseProps): JSX.Element => {
             aria-labelledby="product-showcase-title"
             className="relative mx-auto w-fit text-center"
           >
-            <span className="font-decorative text-xl.5 text-red-primary md:text-2xl">
+            <span className="decorative-text text-root-accent">
               {slice.primary.decorative_text}
             </span>
-            <h2
-              id="product-showcase-title"
-              className="font-title text-2xl font-semibold md:text-3xl"
-            >
+            <h2 id="product-showcase-title" className="home-section-title">
               {slice.primary.main_heading}
             </h2>
             <DecorativeUnderline className="absolute left-[5rem] md:left-[10rem]" />

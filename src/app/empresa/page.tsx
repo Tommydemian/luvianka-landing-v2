@@ -5,10 +5,12 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import Hero from "@/slices/Hero";
+import CompanyOverview from "@/slices/CompanyOverview";
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("empresa");
+  const settings = await client.getSingle("settings");
 
   return (
     <>
@@ -18,6 +20,15 @@ export default async function Page() {
           hero: (props) => (
             <Suspense fallback={<HeroSkeleton />}>
               <Hero {...props} />
+            </Suspense>
+          ),
+          company_overview: (props) => (
+            <Suspense fallback={<HeroSkeleton />}>
+              <CompanyOverview
+                redDeerLogo={settings.data.red_deer_logo}
+                luviankaLogo={settings.data.logo}
+                {...props}
+              />
             </Suspense>
           ),
         }}

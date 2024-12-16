@@ -1,11 +1,16 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
+import { TextWithMediaSkeleton } from "@/slices/TextWithMedia/components/TextWithMediaSkeleton";
 
+import Hero from "@/slices/Hero";
+import TextWithMedia from "@/slices/TextWithMedia";
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -30,5 +35,27 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "home");
 
-  return <SliceZone slices={home.data.slices} components={components} />;
+  return (
+    <SliceZone
+      slices={home.data.slices}
+      components={{
+        hero: (props) => (
+          <Suspense fallback={<HeroSkeleton />}>
+            <Hero {...props} />
+          </Suspense>
+        ),
+        text_with_media: (props) => (
+          <Suspense
+            fallback={
+              <TextWithMediaSkeleton
+                isVariant={props.slice.variation === "fullWidthImage"}
+              />
+            }
+          >
+            <TextWithMedia {...props} />
+          </Suspense>
+        ),
+      }}
+    />
+  );
 }

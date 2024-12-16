@@ -29,7 +29,7 @@
 
 @layer components {
   .container {
-    width: min(100% - 2rem, 85rem);
+    width: min(100% - 2rem, 80rem);
     margin-inline: auto;
     max-width: unset;
   }
@@ -39,7 +39,7 @@
   }
 
   .cta-base {
-    @apply cta-padding inline-flex max-h-[2.938rem] items-center justify-center rounded-cta font-src-sans font-bold uppercase text-white outline-none;
+    @apply cta-padding inline-flex max-h-[2.5rem] items-center justify-center rounded-cta font-src-sans font-bold uppercase text-white outline-none md:max-h-[2.938rem];
   }
 
   .cta-primary {
@@ -75,6 +75,9 @@
 @layer utilities {
   .cta-padding {
     padding: 1em 1.75em;
+  }
+  .mobile-x-padding {
+    width: calc(100% - 2rem);
   }
   .transition-height {
     transition: height 0.3ms ease-in-out;
@@ -117,6 +120,10 @@
     height: inherit;
   }
 
+  .webkit-fill-available {
+    width: -webkit-fill-available;
+  }
+
   .center-absolute {
     top: 50%;
     left: 50%;
@@ -129,5 +136,15 @@
     width: 25%;
     left: 40vw;
     bottom: 0.1rem;
+  }
+
+  .decorative-text {
+    @apply font-decorative text-xl.5 leading-[2rem] md:text-2xl md:leading-[1.5];
+  }
+  .home-section-title {
+    @apply max-w-[18ch] font-title text-2xl font-semibold leading-[3xl] md:text-3xl md:leading-[1.2];
+  }
+  .empresa-section-title {
+    @apply max-w-[18ch] font-title text-[1.75rem] font-semibold leading-[3xl] md:text-2xl md:leading-[1.2];
   }
 }

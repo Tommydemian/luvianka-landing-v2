@@ -1,5 +1,3 @@
-const { title } = require("process");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -48,8 +46,11 @@ module.exports = {
           red: "var(--red-deep)",
           gray: "var(--gray-base)",
         },
-        text: {
+        root: {
           highlight: "var(--red-bright)",
+          primary: "var(--text-base)",
+          secondary: "#FFFFFF",
+          accent: "var(--red-base)",
         },
       },
       borderRadius: {
@@ -57,8 +58,13 @@ module.exports = {
       },
       spacing: {
         "nav-heigth": "var(--navigation-height)",
+        "size-24": "1.5rem",
         "size-30": "1.875rem",
         "size-60": "3.75rem",
+        "text-with-image-flow-content-mobile": "0.688rem",
+        "text-with-image-flow-content-desktop": "1.375rem",
+        "empresa-section-py-mobile": "2.5rem",
+        "empresa-section-py-desktop": "4.375rem",
       },
     },
   },

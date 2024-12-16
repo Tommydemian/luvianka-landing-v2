@@ -24,7 +24,7 @@ export const Footer = async () => {
   } = await client.getSingle("settings");
 
   return (
-    <footer className="mt-[40rem] bg-surface-gray text-base text-white md:text-lg">
+    <footer className="bg-surface-gray text-base text-white md:text-lg">
       <Container>
         <VSpace lg>
           <div className="md:footer-grid grid grid-cols-1 gap-8">

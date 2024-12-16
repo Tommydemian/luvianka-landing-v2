@@ -1,0 +1,213 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"imagen": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+					"width": 2545,
+					"height": 2545
+				},
+				"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+				"width": 2545,
+				"height": 2545,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {
+					"tablet": {
+						"origin": {
+							"id": "tablet",
+							"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+							"width": 4380,
+							"height": 2895
+						},
+						"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?rect=2%2C0%2C4377%2C2895&w=768&h=508",
+						"width": 768,
+						"height": 508,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 2,
+								"y": 0
+							},
+							"background": "transparent"
+						},
+						"credits": null,
+						"alt": null
+					},
+					"mobile": {
+						"origin": {
+							"id": "mobile",
+							"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+							"width": 2747,
+							"height": 4120
+						},
+						"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?rect=0%2C2%2C2747%2C4117&w=375&h=562",
+						"width": 375,
+						"height": 562,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 0,
+								"y": 2
+							},
+							"background": "transparent"
+						},
+						"credits": null,
+						"alt": null
+					}
+				}
+			},
+			"decorative_text": {
+				"__TYPE__": "FieldContent",
+				"value": "declared",
+				"type": "Text"
+			},
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "wash",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa adipisicing nisi et tempor id pariatur. Dolore magna amet ad ad officia et qui ad nisi proident."
+						}
+					}
+				]
+			},
+			"button_link": {
+				"key": "4c608b77-867f-45c2-84c0-10085e6edbd3",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "doctor"
+				}
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "fullWidthImage",
+		"primary": {
+			"imagen": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+					"width": 5848,
+					"height": 3899
+				},
+				"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+				"width": 5848,
+				"height": 3899,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {
+					"tablet": {
+						"origin": {
+							"id": "tablet",
+							"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+							"width": 4480,
+							"height": 4480
+						},
+						"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?rect=0%2C0%2C4480%2C4480&w=768&h=768",
+						"width": 768,
+						"height": 768,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 0,
+								"y": 0
+							},
+							"background": "transparent"
+						},
+						"credits": null,
+						"alt": null
+					},
+					"mobile": {
+						"origin": {
+							"id": "mobile",
+							"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+							"width": 4172,
+							"height": 4000
+						},
+						"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?rect=3%2C0%2C4167%2C4000&w=375&h=360",
+						"width": 375,
+						"height": 360,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 3,
+								"y": 0
+							},
+							"background": "transparent"
+						},
+						"credits": null,
+						"alt": null
+					}
+				}
+			},
+			"decorative_text": {
+				"__TYPE__": "FieldContent",
+				"value": "concerned",
+				"type": "Text"
+			},
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "slight",
+				"type": "Text"
+			},
+			"section_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit et ea officia magna ipsum ipsum proident amet fugiat."
+						}
+					}
+				]
+			},
+			"button_link": {
+				"key": "60ea80f0-fb9a-4204-9d21-c9b23faa161b",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "wind"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

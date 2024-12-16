@@ -80,7 +80,7 @@ export type CalidadDocument<Lang extends string = string> =
     Lang
   >;
 
-type EmpresaDocumentDataSlicesSlice = HeroSlice;
+type EmpresaDocumentDataSlicesSlice = CompanyOverviewSlice | HeroSlice;
 
 /**
  * Content for Empresa documents
@@ -206,7 +206,10 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type PageDocumentDataSlicesSlice = ProductShowcaseSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+  | TextWithMediaSlice
+  | ProductShowcaseSlice
+  | HeroSlice;
 
 /**
  * Content for Page documents
@@ -550,6 +553,71 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
+ * Primary content in *CompanyOverview → Default → Primary*
+ */
+export interface CompanyOverviewSliceDefaultPrimary {
+  /**
+   * Company Overview field in *CompanyOverview → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Quienes Somos Title
+   * - **API ID Path**: company_overview.default.primary.company_overview
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_overview: prismic.KeyTextField;
+
+  /**
+   * Company Overview Description field in *CompanyOverview → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Quienes Somos Descripcion
+   * - **API ID Path**: company_overview.default.primary.company_overview_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  company_overview_description: prismic.RichTextField;
+
+  /**
+   * Company Logos field in *CompanyOverview → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company_overview.default.primary.company_logos
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  company_logos: prismic.ContentRelationshipField<"settings">;
+}
+
+/**
+ * Default variation for CompanyOverview Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanyOverviewSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CompanyOverviewSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CompanyOverview*
+ */
+type CompanyOverviewSliceVariation = CompanyOverviewSliceDefault;
+
+/**
+ * CompanyOverview Shared Slice
+ *
+ * - **API ID**: `company_overview`
+ * - **Description**: CompanyOverview
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanyOverviewSlice = prismic.SharedSlice<
+  "company_overview",
+  CompanyOverviewSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -724,6 +792,161 @@ export type ProductShowcaseSlice = prismic.SharedSlice<
   ProductShowcaseSliceVariation
 >;
 
+/**
+ * Primary content in *TextWithMedia → Default → Primary*
+ */
+export interface TextWithMediaSliceDefaultPrimary {
+  /**
+   * Imagen field in *TextWithMedia → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_media.default.primary.imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<"tablet" | "mobile">;
+
+  /**
+   * Decorative Text field in *TextWithMedia → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Texto Decorativo
+   * - **API ID Path**: text_with_media.default.primary.decorative_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  decorative_text: prismic.KeyTextField;
+
+  /**
+   * Section Title field in *TextWithMedia → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: text_with_media.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *TextWithMedia → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la seccion
+   * - **API ID Path**: text_with_media.default.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_description: prismic.RichTextField;
+
+  /**
+   * Button Link field in *TextWithMedia → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link del CTA | Button
+   * - **API ID Path**: text_with_media.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for TextWithMedia Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithMediaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextWithMediaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *TextWithMedia → fullWidthImage → Primary*
+ */
+export interface TextWithMediaSliceFullWidthImagePrimary {
+  /**
+   * Imagen field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<"tablet" | "mobile">;
+
+  /**
+   * Decorative Text field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Texto Decorativo
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.decorative_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  decorative_text: prismic.KeyTextField;
+
+  /**
+   * Section Title field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la seccion
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_description: prismic.RichTextField;
+
+  /**
+   * Button Link field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link del CTA | Button
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * fullWidthImage variation for TextWithMedia Slice
+ *
+ * - **API ID**: `fullWidthImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithMediaSliceFullWidthImage = prismic.SharedSliceVariation<
+  "fullWidthImage",
+  Simplify<TextWithMediaSliceFullWidthImagePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextWithMedia*
+ */
+type TextWithMediaSliceVariation =
+  | TextWithMediaSliceDefault
+  | TextWithMediaSliceFullWidthImage;
+
+/**
+ * TextWithMedia Shared Slice
+ *
+ * - **API ID**: `text_with_media`
+ * - **Description**: TextWithMedia
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithMediaSlice = prismic.SharedSlice<
+  "text_with_media",
+  TextWithMediaSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -764,6 +987,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataContactSectionItem,
       AllDocumentTypes,
+      CompanyOverviewSlice,
+      CompanyOverviewSliceDefaultPrimary,
+      CompanyOverviewSliceVariation,
+      CompanyOverviewSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceHeroWithGradientPrimary,
@@ -774,6 +1001,12 @@ declare module "@prismicio/client" {
       ProductShowcaseSliceDefaultPrimary,
       ProductShowcaseSliceVariation,
       ProductShowcaseSliceDefault,
+      TextWithMediaSlice,
+      TextWithMediaSliceDefaultPrimary,
+      TextWithMediaSliceFullWidthImagePrimary,
+      TextWithMediaSliceVariation,
+      TextWithMediaSliceDefault,
+      TextWithMediaSliceFullWidthImage,
     };
   }
 }

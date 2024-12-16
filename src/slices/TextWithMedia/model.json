@@ -1,0 +1,136 @@
+{
+  "id": "text_with_media",
+  "type": "SharedSlice",
+  "name": "TextWithMedia",
+  "description": "TextWithMedia",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "imagen": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen",
+            "constraint": {},
+            "thumbnails": [
+              {
+                "name": "tablet",
+                "width": 768,
+                "height": null
+              },
+              {
+                "name": "mobile",
+                "width": 375,
+                "height": null
+              }
+            ]
+          }
+        },
+        "decorative_text": {
+          "type": "Text",
+          "config": {
+            "label": "Decorative Text",
+            "placeholder": "Texto Decorativo"
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Titulo de la seccion "
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Descripcion de la seccion",
+            "allowTargetBlank": true,
+            "multi": "paragraph,em,hyperlink,image,embed,list-item,o-list-item,strong"
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "Link del CTA | Button",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "fullWidthImage",
+      "name": "fullWidthImage",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "imagen": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen",
+            "constraint": {},
+            "thumbnails": [
+              {
+                "name": "tablet",
+                "width": 768,
+                "height": null
+              },
+              {
+                "name": "mobile",
+                "width": 375,
+                "height": null
+              }
+            ]
+          }
+        },
+        "decorative_text": {
+          "type": "Text",
+          "config": {
+            "label": "Decorative Text",
+            "placeholder": "Texto Decorativo"
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Titulo de la seccion "
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Descripcion de la seccion",
+            "allowTargetBlank": true,
+            "multi": "paragraph,em,hyperlink,image,embed,list-item,o-list-item,strong"
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "Link del CTA | Button",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

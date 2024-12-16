@@ -1,0 +1,46 @@
+{
+  "id": "company_overview",
+  "type": "SharedSlice",
+  "name": "CompanyOverview",
+  "description": "CompanyOverview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "company_overview": {
+          "type": "Text",
+          "config": {
+            "label": "Company Overview",
+            "placeholder": "Quienes Somos Title"
+          }
+        },
+        "company_overview_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Company Overview Description",
+            "placeholder": "Quienes Somos Descripcion",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "company_logos": {
+          "type": "Link",
+          "config": {
+            "label": "Company Logos",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "settings"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
