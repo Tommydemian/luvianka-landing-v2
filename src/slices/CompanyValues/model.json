@@ -1,0 +1,51 @@
+{
+  "id": "company_values",
+  "type": "SharedSlice",
+  "name": "CompanyValues",
+  "description": "CompanyValues",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Titulo de la seccion "
+          }
+        },
+        "valuescard": {
+          "type": "Group",
+          "config": {
+            "label": "ValuesCard",
+            "repeat": true,
+            "fields": {
+              "card_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Card title",
+                  "placeholder": "Titulo de la card "
+                }
+              },
+              "card_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Card Description",
+                  "placeholder": "Descripcion de la Card",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

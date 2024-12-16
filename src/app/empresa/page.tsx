@@ -6,6 +6,7 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import Hero from "@/slices/Hero";
 import CompanyOverview from "@/slices/CompanyOverview";
+import CompanyValues from "@/slices/CompanyValues";
 
 export default async function Page() {
   const client = createClient();
@@ -29,6 +30,11 @@ export default async function Page() {
                 luviankaLogo={settings.data.logo}
                 {...props}
               />
+            </Suspense>
+          ),
+          company_values: (props) => (
+            <Suspense fallback={<HeroSkeleton />}>
+              <CompanyValues {...props} />
             </Suspense>
           ),
         }}

@@ -76,6 +76,9 @@
   .cta-padding {
     padding: 1em 1.75em;
   }
+  .our-values-card-padding {
+    padding: 1em 1.5em;
+  }
   .mobile-x-padding {
     width: calc(100% - 2rem);
   }

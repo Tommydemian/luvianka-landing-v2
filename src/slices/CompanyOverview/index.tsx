@@ -66,7 +66,7 @@ const CompanyOverview = ({
                 field={slice.primary.company_overview_description}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="max-w-[58xh]">{children}</p>
+                    <p className="max-w-[58ch]">{children}</p>
                   ),
                 }}
               />

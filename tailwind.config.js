@@ -45,6 +45,7 @@ module.exports = {
         surface: {
           red: "var(--red-deep)",
           gray: "var(--gray-base)",
+          beige: "#f8f0ed",
         },
         root: {
           highlight: "var(--red-bright)",

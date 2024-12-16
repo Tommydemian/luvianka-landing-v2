@@ -80,7 +80,10 @@ export type CalidadDocument<Lang extends string = string> =
     Lang
   >;
 
-type EmpresaDocumentDataSlicesSlice = CompanyOverviewSlice | HeroSlice;
+type EmpresaDocumentDataSlicesSlice =
+  | CompanyValuesSlice
+  | CompanyOverviewSlice
+  | HeroSlice;
 
 /**
  * Content for Empresa documents
@@ -618,6 +621,88 @@ export type CompanyOverviewSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *CompanyValues → Default → Primary → ValuesCard*
+ */
+export interface CompanyValuesSliceDefaultPrimaryValuescardItem {
+  /**
+   * Card title field in *CompanyValues → Default → Primary → ValuesCard*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la card
+   * - **API ID Path**: company_values.default.primary.valuescard[].card_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Card Description field in *CompanyValues → Default → Primary → ValuesCard*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la Card
+   * - **API ID Path**: company_values.default.primary.valuescard[].card_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  card_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CompanyValues → Default → Primary*
+ */
+export interface CompanyValuesSliceDefaultPrimary {
+  /**
+   * Section Title field in *CompanyValues → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: company_values.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * ValuesCard field in *CompanyValues → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: company_values.default.primary.valuescard[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  valuescard: prismic.GroupField<
+    Simplify<CompanyValuesSliceDefaultPrimaryValuescardItem>
+  >;
+}
+
+/**
+ * Default variation for CompanyValues Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanyValuesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CompanyValuesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CompanyValues*
+ */
+type CompanyValuesSliceVariation = CompanyValuesSliceDefault;
+
+/**
+ * CompanyValues Shared Slice
+ *
+ * - **API ID**: `company_values`
+ * - **Description**: CompanyValues
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CompanyValuesSlice = prismic.SharedSlice<
+  "company_values",
+  CompanyValuesSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -991,6 +1076,11 @@ declare module "@prismicio/client" {
       CompanyOverviewSliceDefaultPrimary,
       CompanyOverviewSliceVariation,
       CompanyOverviewSliceDefault,
+      CompanyValuesSlice,
+      CompanyValuesSliceDefaultPrimaryValuescardItem,
+      CompanyValuesSliceDefaultPrimary,
+      CompanyValuesSliceVariation,
+      CompanyValuesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceHeroWithGradientPrimary,
