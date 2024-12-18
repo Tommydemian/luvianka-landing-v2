@@ -6,7 +6,7 @@ import { Container } from "../../ui/Container";
 import { VSpace } from "../../ui/VSpace";
 import { TheForm } from "./TheForm";
 // Hooks & Utils
-import { useContactForm } from "@/app/lib/hooks/useContactForm";
+import { useContactForm } from "@/app/components/forms/lib/hooks/useContactForm";
 import { cn } from "@/app/lib/utils";
 // Data
 import { services } from "./data";
@@ -18,20 +18,9 @@ export const ContactForm = () => {
     services[0],
   );
   const formRef = useRef<HTMLFormElement>(null);
-  const { isSubmitting } = useContactForm(selectedService);
-
-  useEffect(() => {
-    console.log(isSubmitting);
-  }, [isSubmitting]);
 
   return (
-    <section
-      className={cn(
-        "py-size-45",
-        "relative",
-        isSubmitting && "pointer-events-none opacity-50",
-      )}
-    >
+    <section className="relative py-size-45">
       <Container>
         <VSpace>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[300px_1fr]">

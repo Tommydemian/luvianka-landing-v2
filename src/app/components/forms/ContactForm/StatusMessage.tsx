@@ -14,14 +14,6 @@ export const StatusMessage: React.FC<StatusMessageProps> = ({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    console.log(isVisible, "isVisible");
-  }, [isVisible]);
-
-  useEffect(() => {
-    console.log(isSuccess, "isSuccess");
-  }, [isSuccess]);
-
-  useEffect(() => {
     if (formError || isSuccess) {
       setTimeout(() => setIsVisible(true), 100);
 

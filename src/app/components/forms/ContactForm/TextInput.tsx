@@ -26,7 +26,7 @@ export const TextInput: React.FC<Props> = ({
         placeholder={placeholder}
         required
         className={cn(
-          "w-full rounded-md border px-4 py-2",
+          "max-md:text-sm w-full rounded-md border px-4 py-2",
           errors.get(inputName) ? "border-red-500" : "border-gray-300",
         )}
         name={inputName}

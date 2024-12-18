@@ -453,6 +453,17 @@ interface ProductDocumentData {
   product_title: prismic.KeyTextField;
 
   /**
+   * Button Link field in *Product*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link a la pagina del producto
+   * - **API ID Path**: product.button_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
    * Product Varieties field in *Product*
    *
    * - **Field Type**: Group

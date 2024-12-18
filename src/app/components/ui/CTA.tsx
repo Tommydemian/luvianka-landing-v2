@@ -18,7 +18,7 @@ export const CTA: React.FC<CTAProps> = ({
     <PrismicNextLink
       className={cn(
         "cta-base",
-        variant === "primary" ? "cta--primary" : "cta--secondary",
+        variant === "primary" ? "cta-primary" : "cta-secondary",
         className,
       )}
       field={field}

@@ -27,6 +27,17 @@
           "placeholder": "Titulo del producto"
         }
       },
+      "button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button Link",
+          "placeholder": "Link a la pagina del producto",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "product_varieties": {
         "type": "Group",
         "config": {

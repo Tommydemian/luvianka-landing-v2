@@ -8,7 +8,7 @@ import { StatusMessage } from "./StatusMessage";
 import { cn } from "@/app/lib/utils";
 // Hooks
 import { useFormValidations } from "../lib/hooks/useFormValidations";
-import { useContactForm } from "@/app/lib/hooks/useContactForm";
+import { useContactForm } from "@/app/components/forms/lib/hooks/useContactForm";
 // Types
 import type { ServiceType } from "../types";
 import { FORM_FIELDS } from "../types";

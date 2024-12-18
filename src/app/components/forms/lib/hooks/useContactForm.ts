@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { ServiceType } from "@/app/components/forms/types";
 
 export const useContactForm = (
@@ -9,6 +9,16 @@ export const useContactForm = (
   const [isSuccess, setIsSuccess] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

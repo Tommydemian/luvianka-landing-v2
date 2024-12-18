@@ -10,6 +10,7 @@ module.exports = {
   ],
   theme: {
     fontSize: {
+      sm: "0.875rem",
       base: "1rem",
       lg: "1.125rem",
       xl: "1.25rem",
@@ -33,6 +34,8 @@ module.exports = {
         // Descriptive (Visual-based) approach
         red: {
           primary: "var(--red-base)",
+          "primary-hover": "var(--color-primary-hover)",
+
           secondary: "var(--red-deep)",
           accent: "var(--red-bright)",
         },
@@ -81,6 +84,9 @@ module.exports = {
       willChange: {
         "background-color": "background-color",
         "box-shadow": "box-shadow",
+      },
+      boxShadow: {
+        cta: "var(--cta-shadow)",
       },
     },
   },

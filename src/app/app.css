@@ -7,15 +7,20 @@
   --red-deep: #d61c1c; /* backgrounds */
   --red-bright: #ff2221; /* footer titles */
 
+  --color-primary-hover: #e75570;
+
   --gray-base: #2d2d2d;
 
   --text-base: #05090c;
 
   --navigation-height: 5.25rem;
-
-  --cta-border-radius: 2.375rem;
-
   --transition-timing-cubic-bezier-base: cubic-bezier(0.22, 0, 0.26, 1);
+  /* CTA */
+  --cta-border-radius: 2.375rem;
+  --cta-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --cta-transition: background-color 0.3s
+      var(--transition--timing-cubic-bezier-base),
+    box-shadow 0.3s 0.15s var(--transition--timing-cubic-bezier-base);
 }
 
 @layer base {
@@ -42,24 +47,28 @@
     transition: opacity 750ms ease-in 0.25ms;
   }
 
-  .cta-base {
-    @apply cta-padding duration-cubic-bezier-base will-change-background-color will-change-box-shadow inline-flex max-h-[47px] w-fit items-center justify-center rounded-cta px-[1em] py-[1.75em] text-center text-base font-bold uppercase text-white outline-none transition-[background-color,box-shadow] ease-in-out;
+  .cta-transition {
+    transition:
+      background-color 0.3s cubic-bezier(0.22, 0, 0.26, 1),
+      box-shadow 0.3s 0.15s cubic-bezier(0.22, 0, 0.26, 1);
   }
 
-  .cta--primary {
+  .cta-base {
+    @apply cta-padding inline-flex max-h-[47px] w-fit items-center justify-center rounded-cta px-[1em] py-[1.75em] text-center text-base font-bold uppercase text-white outline-none;
+    @apply cta-transition;
+  }
+
+  .cta-primary {
     @apply bg-red-primary;
+    @apply hover:bg-red-primary-hover hover:shadow-cta;
 
-    /* &:hover {
-      @apply bg-black shadow-[var(--cta-shadow)];
-    }
-
-    &:active,
+    /* &:active,
     &:focus {
       @apply bg-[var(--color-primary-active)] shadow-[var(--cta-shadow)] outline outline-2 outline-offset-2 outline-[var(--color-primary-focus-outline)];
     } */
   }
 
-  .cta--secondary {
+  .cta-secondary {
     @apply bg-black;
 
     /* &:hover {
@@ -110,6 +119,14 @@
 
   .service-card-transition {
     transition: background 0.5s ease-in-out;
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply relative aspect-[3/4] h-full min-h-[20rem] w-full cursor-pointer overflow-hidden rounded-product-card shadow-md transition-transform duration-300 ease-out md:min-h-[27.25rem] md:w-[21.188rem];
+  }
+  .product-image {
+    @apply inherit-size object-cover transition-transform duration-500 hover:scale-105;
   }
 }
 
