@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { PrismicNextLink } from "@prismicio/next";
 import { cn } from "@/app/lib/utils";
 import { Container } from "../../ui/Container";
@@ -8,30 +9,34 @@ import { VSpace } from "../../ui/VSpace";
 
 import { usePathname } from "next/navigation";
 
-import type { SettingsDocumentData } from "@/prismicio-types";
+import type { SettingsDocumentData, ProductDocument } from "@/prismicio-types";
 
 type NavigationProps = {
   navItems: SettingsDocumentData["navigation_link"];
   isMenuOpen: boolean;
   toggleMobileMenu: () => void;
+  products: ProductDocument[];
 };
 
 export const Navigation: React.FC<NavigationProps> = ({
   navItems,
   isMenuOpen,
   toggleMobileMenu,
+  products,
 }) => {
   const pathname = usePathname();
 
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
-  }, []);
+    if (isMenuOpen) {
+      toggleMobileMenu();
+    }
+  }, [pathname]);
 
   useEffect(() => {
-    toggleMobileMenu();
-  }, [pathname, hasMounted]);
+    setHasMounted(true);
+  }, []);
 
   return (
     <nav
@@ -44,10 +49,6 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         // Flex properties
         "flex gap-8",
-
-        // Font
-        "font-src-sans",
-
         // Base state for mobile - no transitions
         "max-md:opacity-0",
 
@@ -64,19 +65,31 @@ export const Navigation: React.FC<NavigationProps> = ({
             role="list"
             className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-center"
           >
-            {navItems?.map((link) => {
-              const isActive =
-                pathname === `/${link.text?.toLocaleLowerCase()}`;
+            {navItems?.map((link, index) => {
+              const isActive = () => {
+                const currentPath = pathname.endsWith("/")
+                  ? pathname.slice(0, -1)
+                  : pathname;
+                const linkPath = `/${link.text?.toLocaleLowerCase()}`;
+                return (
+                  currentPath === linkPath || currentPath.startsWith(linkPath)
+                );
+              };
               return (
                 <li role="listitem" key={link.key}>
                   <PrismicNextLink
                     field={link}
                     className={cn(
-                      "nav-link md:text-lg",
-                      isActive && "nav-link--active",
+                      "nav-link flex items-end md:text-lg",
+                      isActive() && "nav-link--active",
                     )}
                   >
                     {link.text}
+                    {index === 0 && (
+                      <span>
+                        <ChevronDown className="w-8" />
+                      </span>
+                    )}
                   </PrismicNextLink>
                 </li>
               );

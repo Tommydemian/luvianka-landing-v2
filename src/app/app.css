@@ -12,6 +12,10 @@
   --text-base: #05090c;
 
   --navigation-height: 5.25rem;
+
+  --cta-border-radius: 2.375rem;
+
+  --transition-timing-cubic-bezier-base: cubic-bezier(0.22, 0, 0.26, 1);
 }
 
 @layer base {
@@ -39,28 +43,61 @@
   }
 
   .cta-base {
-    @apply cta-padding inline-flex max-h-[2.5rem] items-center justify-center rounded-cta font-src-sans font-bold uppercase text-white outline-none md:max-h-[2.938rem];
+    @apply cta-padding duration-cubic-bezier-base will-change-background-color will-change-box-shadow inline-flex max-h-[47px] w-fit items-center justify-center rounded-cta px-[1em] py-[1.75em] text-center text-base font-bold uppercase text-white outline-none transition-[background-color,box-shadow] ease-in-out;
   }
 
-  .cta-primary {
+  .cta--primary {
     @apply bg-red-primary;
+
+    /* &:hover {
+      @apply bg-black shadow-[var(--cta-shadow)];
+    }
+
+    &:active,
+    &:focus {
+      @apply bg-[var(--color-primary-active)] shadow-[var(--cta-shadow)] outline outline-2 outline-offset-2 outline-[var(--color-primary-focus-outline)];
+    } */
   }
 
-  .cta-secondary {
+  .cta--secondary {
     @apply bg-black;
+
+    /* &:hover {
+      @apply bg-[var(--color-black-hover)] shadow-[var(--cta-shadow)];
+    }
+
+    &:active,
+    &:focus {
+      @apply bg-[var(--color-black-active)] shadow-[var(--cta-shadow)] outline outline-2 outline-offset-2 outline-[var(--color-secondary-focus-outline)];
+    } */
+  }
+
+  .product-card-image {
+    color: transparent;
+    width: 100%;
+    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.26, 0, 0.38, 1);
+    transition-delay: 0.1s;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   .nav-link {
     @apply relative text-base capitalize tracking-wide;
-    @apply transition-all duration-200;
-    /* Base and hover */
+    @apply transition-colors duration-200;
+    /* Base y hover */
     @apply text-black hover:text-red-primary;
-    /* Focus - keyboard navigation */
-    @apply focus:text-red-primary focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2;
-    /* Active - click state */
-    @apply active:text-red-secondary;
-    /* Focus Within - container focus */
-    @apply focus-within:text-red-primary;
+    /* Quitar el focus general */
+    @apply focus:outline-none;
+    /* Aplicar focus-visible para accesibilidad */
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary;
+  }
+
+  .nav-link--active {
+    @apply text-red-primary hover:text-red-primary;
   }
 
   .footer-email-link {
@@ -69,6 +106,10 @@
 
   .nav-link--active {
     @apply text-red-primary;
+  }
+
+  .service-card-transition {
+    transition: background 0.5s ease-in-out;
   }
 }
 
@@ -144,10 +185,23 @@
   .decorative-text {
     @apply font-decorative text-xl.5 leading-[2rem] md:text-2xl md:leading-[1.5];
   }
-  .home-section-title {
-    @apply max-w-[18ch] font-title text-2xl font-semibold leading-[3xl] md:text-3xl md:leading-[1.2];
+
+  /* Section title base */
+  .section-title-base {
+    @apply font-title font-semibold leading-[3xl] md:leading-[1.2];
   }
+  /* Home Section Title */
+  .home-section-title-base {
+    @apply section-title-base text-2xl md:text-3xl;
+  }
+  .home-section-title {
+    @apply home-section-title-base max-w-[18ch];
+  }
+  .home-section-title-no-max-w {
+    @apply home-section-title-base;
+  }
+  /* Empresa Section title */
   .empresa-section-title {
-    @apply max-w-[18ch] font-title text-[1.75rem] font-semibold leading-[3xl] md:text-2xl md:leading-[1.2];
+    @apply section-title-base max-w-[18ch] text-[1.75rem] md:text-2xl;
   }
 }

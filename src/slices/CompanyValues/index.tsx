@@ -35,8 +35,8 @@ const CompanyValues = ({ slice }: CompanyValuesProps): JSX.Element => {
           <h2 className="home-section-title mx-auto pb-10 leading-[1]">
             {slice.primary.section_title}
           </h2>
-          <div className="mx-auto grid w-full grid-cols-1 items-center justify-center gap-6 md:grid-cols-3">
-            {slice.primary.valuescard.map((item, index) => (
+          <div className="mx-auto grid w-full grid-cols-1 items-center justify-center gap-6 py-6 md:grid-cols-3">
+            {slice.primary.valuescard?.map((item, index) => (
               <article
                 key={item.card_title}
                 className="our-values-card-padding flex h-full flex-col items-center justify-start gap-y-3 rounded-lg bg-white shadow-lg"

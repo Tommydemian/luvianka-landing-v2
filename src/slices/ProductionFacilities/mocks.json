@@ -1,0 +1,82 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"facilities": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "huge",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Dolore velit velit fugiat commodo amet deserunt fugiat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"imagen",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+										"width": 4480,
+										"height": 4480
+									},
+									"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+									"width": 4480,
+									"height": 4480,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			},
+			"section_title_start": {
+				"__TYPE__": "FieldContent",
+				"value": "seven",
+				"type": "Text"
+			},
+			"highlighted_word": {
+				"__TYPE__": "FieldContent",
+				"value": "course",
+				"type": "Text"
+			},
+			"section_title_end": {
+				"__TYPE__": "FieldContent",
+				"value": "women",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

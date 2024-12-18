@@ -6,13 +6,17 @@ import { HamburguerMenuButton } from "./HamburguerMenuButton";
 
 import { useBreakpoint } from "@/app/lib/hooks/useBreakpoint";
 
-import type { SettingsDocumentData } from "@/prismicio-types";
+import type { SettingsDocumentData, ProductDocument } from "@/prismicio-types";
 
 type MobileWrapperProps = {
   navItems: SettingsDocumentData["navigation_link"];
+  products: ProductDocument[];
 };
 
-export const MobileWrapper: React.FC<MobileWrapperProps> = ({ navItems }) => {
+export const MobileWrapper: React.FC<MobileWrapperProps> = ({
+  navItems,
+  products,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDesktop = useBreakpoint("(min-width: 768px)");
 
@@ -36,6 +40,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({ navItems }) => {
         isMenuOpen={isMenuOpen}
         navItems={navItems}
         toggleMobileMenu={toggleMobileMenu}
+        products={products}
       />
     </>
   );

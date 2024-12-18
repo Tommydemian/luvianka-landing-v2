@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const quality = await client.getSingle("calidad");
 
   return {
-    title: prismic.asText(quality.data.title),
+    // title: prismic.asText(quality.data.title),
     description: quality.data.meta_description,
     openGraph: {
       title: quality.data.meta_title ?? undefined,

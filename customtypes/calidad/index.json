@@ -6,18 +6,15 @@
   "status": true,
   "json": {
     "Main": {
-      "titulo_de_prueba": {
-        "type": "Text",
-        "config": {
-          "label": "Titulo de prueba",
-          "placeholder": "Tit"
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "hero": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

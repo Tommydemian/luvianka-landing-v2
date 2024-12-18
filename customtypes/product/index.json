@@ -1,0 +1,91 @@
+{
+  "format": "custom",
+  "id": "product",
+  "label": "Product",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "product_image": {
+        "type": "Image",
+        "config": {
+          "label": "Product Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "product_title": {
+        "type": "Text",
+        "config": {
+          "label": "Product Title",
+          "placeholder": "Titulo del producto"
+        }
+      },
+      "product_varieties": {
+        "type": "Group",
+        "config": {
+          "label": "Product Varieties",
+          "repeat": true,
+          "fields": {
+            "product_image": {
+              "type": "Image",
+              "config": {
+                "label": "Product Var Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "product_var_code": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Code",
+                "placeholder": "Codigo de la va del producto"
+              }
+            },
+            "product_var_type": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Type",
+                "placeholder": "Tipo de var de producto"
+              }
+            },
+            "product_var_weight": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Weight",
+                "placeholder": "Peso de la var del producto"
+              }
+            },
+            "product_var_lifespan": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Lifespan",
+                "placeholder": "Esperanza de vida de la var. del producto"
+              }
+            },
+            "product_var_quantity_per_box": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Quantity per box",
+                "placeholder": "Cantidad por caja de la var del producto"
+              }
+            },
+            "product_var_weight_per_box": {
+              "type": "Text",
+              "config": {
+                "label": "Product Var Weight per box ",
+                "placeholder": "Peso de la cara de la var del product"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

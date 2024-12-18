@@ -13,6 +13,7 @@ import Link from "next/link";
 export const Header = async () => {
   const client = createClient();
   const settings = await client.getSingle("settings");
+  const products = await client.getAllByType("product");
 
   return (
     <header
@@ -40,7 +41,10 @@ export const Header = async () => {
               </Link>
             </div>
 
-            <MobileWrapper navItems={settings.data.navigation_link} />
+            <MobileWrapper
+              navItems={settings.data.navigation_link}
+              products={products}
+            />
 
             {/* Contact Button */}
             {settings.data.buttonlink.map((link) => (

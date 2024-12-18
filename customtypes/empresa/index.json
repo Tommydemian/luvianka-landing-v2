@@ -17,6 +17,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "brand_showcase": {
+              "type": "SharedSlice"
+            },
+            "production_facilities": {
+              "type": "SharedSlice"
+            },
             "company_values": {
               "type": "SharedSlice"
             },

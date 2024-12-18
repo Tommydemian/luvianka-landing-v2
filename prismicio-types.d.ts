@@ -4,23 +4,12 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type CalidadDocumentDataSlicesSlice = never;
+type CalidadDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Calidad documents
  */
 interface CalidadDocumentData {
-  /**
-   * Titulo de prueba field in *Calidad*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Tit
-   * - **API ID Path**: calidad.titulo_de_prueba
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  titulo_de_prueba: prismic.KeyTextField;
-
   /**
    * Slice Zone field in *Calidad*
    *
@@ -80,7 +69,85 @@ export type CalidadDocument<Lang extends string = string> =
     Lang
   >;
 
+type ContactanosDocumentDataSlicesSlice = HeroSlice;
+
+/**
+ * Content for Contactanos documents
+ */
+interface ContactanosDocumentData {
+  /**
+   * Page Description field in *Contactanos*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la Pagina
+   * - **API ID Path**: contactanos.page_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  page_description: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Contactanos*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contactanos.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContactanosDocumentDataSlicesSlice> /**
+   * Meta Title field in *Contactanos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contactanos.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Contactanos*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contactanos.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Contactanos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contactanos.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Contactanos document from Prismic
+ *
+ * - **API ID**: `contactanos`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactanosDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContactanosDocumentData>,
+    "contactanos",
+    Lang
+  >;
+
 type EmpresaDocumentDataSlicesSlice =
+  | BrandShowcaseSlice
+  | ProductionFacilitiesSlice
   | CompanyValuesSlice
   | CompanyOverviewSlice
   | HeroSlice;
@@ -283,6 +350,155 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Item in *Product → Product Varieties*
+ */
+export interface ProductDocumentDataProductVarietiesItem {
+  /**
+   * Product Var Image field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.product_varieties[].product_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Product Var Code field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Codigo de la va del producto
+   * - **API ID Path**: product.product_varieties[].product_var_code
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_code: prismic.KeyTextField;
+
+  /**
+   * Product Var Type field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Tipo de var de producto
+   * - **API ID Path**: product.product_varieties[].product_var_type
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_type: prismic.KeyTextField;
+
+  /**
+   * Product Var Weight field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Peso de la var del producto
+   * - **API ID Path**: product.product_varieties[].product_var_weight
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_weight: prismic.KeyTextField;
+
+  /**
+   * Product Var Lifespan field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Esperanza de vida de la var. del producto
+   * - **API ID Path**: product.product_varieties[].product_var_lifespan
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_lifespan: prismic.KeyTextField;
+
+  /**
+   * Product Var Quantity per box field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Cantidad por caja de la var del producto
+   * - **API ID Path**: product.product_varieties[].product_var_quantity_per_box
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_quantity_per_box: prismic.KeyTextField;
+
+  /**
+   * Product Var Weight per box  field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Peso de la cara de la var del product
+   * - **API ID Path**: product.product_varieties[].product_var_weight_per_box
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_weight_per_box: prismic.KeyTextField;
+}
+
+/**
+ * Content for Product documents
+ */
+interface ProductDocumentData {
+  /**
+   * Product Image field in *Product*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.product_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Product Title field in *Product*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo del producto
+   * - **API ID Path**: product.product_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_title: prismic.KeyTextField;
+
+  /**
+   * Product Varieties field in *Product*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.product_varieties[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  product_varieties: prismic.GroupField<
+    Simplify<ProductDocumentDataProductVarietiesItem>
+  >;
+}
+
+/**
+ * Product document from Prismic
+ *
+ * - **API ID**: `product`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductDocumentData>,
+    "product",
+    Lang
+  >;
+
+interface ProductListDocumentData {}
+
+/**
+ * Product List document from Prismic
+ *
+ * - **API ID**: `product_list`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductListDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductListDocumentData>,
+    "product_list",
+    Lang
+  >;
 
 type ProductosDocumentDataSlicesSlice = never;
 
@@ -549,11 +765,99 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CalidadDocument
+  | ContactanosDocument
   | EmpresaDocument
   | HomeDocument
   | PageDocument
+  | ProductDocument
+  | ProductListDocument
   | ProductosDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *BrandShowcase → Default → Primary*
+ */
+export interface BrandShowcaseSliceDefaultPrimary {
+  /**
+   * Section Title field in *BrandShowcase → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: brand_showcase.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *BrandShowcase → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la seccion | Descripcion sobre RedDeer
+   * - **API ID Path**: brand_showcase.default.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_description: prismic.RichTextField;
+
+  /**
+   * Lambare Logo field in *BrandShowcase → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_showcase.default.primary.lambare_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  lambare_logo: prismic.ImageField<never>;
+
+  /**
+   * LVK logo field in *BrandShowcase → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_showcase.default.primary.lvk_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  lvk_logo: prismic.ImageField<never>;
+
+  /**
+   * 295 Logo field in *BrandShowcase → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_showcase.default.primary.295_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  "295_logo": prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for BrandShowcase Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BrandShowcaseSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BrandShowcaseSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BrandShowcase*
+ */
+type BrandShowcaseSliceVariation = BrandShowcaseSliceDefault;
+
+/**
+ * BrandShowcase Shared Slice
+ *
+ * - **API ID**: `brand_showcase`
+ * - **Description**: BrandShowcase
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BrandShowcaseSlice = prismic.SharedSlice<
+  "brand_showcase",
+  BrandShowcaseSliceVariation
+>;
 
 /**
  * Primary content in *CompanyOverview → Default → Primary*
@@ -878,6 +1182,118 @@ export type ProductShowcaseSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProductionFacilities → Default → Primary → facilities*
+ */
+export interface ProductionFacilitiesSliceDefaultPrimaryFacilitiesItem {
+  /**
+   * Title field in *ProductionFacilities → Default → Primary → facilities*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo
+   * - **API ID Path**: production_facilities.default.primary.facilities[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ProductionFacilities → Default → Primary → facilities*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion
+   * - **API ID Path**: production_facilities.default.primary.facilities[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Imagen field in *ProductionFacilities → Default → Primary → facilities*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_facilities.default.primary.facilities[].imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ProductionFacilities → Default → Primary*
+ */
+export interface ProductionFacilitiesSliceDefaultPrimary {
+  /**
+   * Section Title Start field in *ProductionFacilities → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Comienzo del titulo de la seccion
+   * - **API ID Path**: production_facilities.default.primary.section_title_start
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title_start: prismic.KeyTextField;
+
+  /**
+   * Highlighted Word field in *ProductionFacilities → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Palabra especifica del titulo en Rojo
+   * - **API ID Path**: production_facilities.default.primary.highlighted_word
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  highlighted_word: prismic.KeyTextField;
+
+  /**
+   * Section Title End field in *ProductionFacilities → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Final del titulo de la seccion
+   * - **API ID Path**: production_facilities.default.primary.section_title_end
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title_end: prismic.KeyTextField;
+
+  /**
+   * facilities field in *ProductionFacilities → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_facilities.default.primary.facilities[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  facilities: prismic.GroupField<
+    Simplify<ProductionFacilitiesSliceDefaultPrimaryFacilitiesItem>
+  >;
+}
+
+/**
+ * Default variation for ProductionFacilities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductionFacilitiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductionFacilitiesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductionFacilities*
+ */
+type ProductionFacilitiesSliceVariation = ProductionFacilitiesSliceDefault;
+
+/**
+ * ProductionFacilities Shared Slice
+ *
+ * - **API ID**: `production_facilities`
+ * - **Description**: ProductionFacilities
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductionFacilitiesSlice = prismic.SharedSlice<
+  "production_facilities",
+  ProductionFacilitiesSliceVariation
+>;
+
+/**
  * Primary content in *TextWithMedia → Default → Primary*
  */
 export interface TextWithMediaSliceDefaultPrimary {
@@ -1056,6 +1472,9 @@ declare module "@prismicio/client" {
       CalidadDocument,
       CalidadDocumentData,
       CalidadDocumentDataSlicesSlice,
+      ContactanosDocument,
+      ContactanosDocumentData,
+      ContactanosDocumentDataSlicesSlice,
       EmpresaDocument,
       EmpresaDocumentData,
       EmpresaDocumentDataSlicesSlice,
@@ -1065,6 +1484,11 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ProductDocument,
+      ProductDocumentData,
+      ProductDocumentDataProductVarietiesItem,
+      ProductListDocument,
+      ProductListDocumentData,
       ProductosDocument,
       ProductosDocumentData,
       ProductosDocumentDataSlicesSlice,
@@ -1072,6 +1496,10 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataContactSectionItem,
       AllDocumentTypes,
+      BrandShowcaseSlice,
+      BrandShowcaseSliceDefaultPrimary,
+      BrandShowcaseSliceVariation,
+      BrandShowcaseSliceDefault,
       CompanyOverviewSlice,
       CompanyOverviewSliceDefaultPrimary,
       CompanyOverviewSliceVariation,
@@ -1091,6 +1519,11 @@ declare module "@prismicio/client" {
       ProductShowcaseSliceDefaultPrimary,
       ProductShowcaseSliceVariation,
       ProductShowcaseSliceDefault,
+      ProductionFacilitiesSlice,
+      ProductionFacilitiesSliceDefaultPrimaryFacilitiesItem,
+      ProductionFacilitiesSliceDefaultPrimary,
+      ProductionFacilitiesSliceVariation,
+      ProductionFacilitiesSliceDefault,
       TextWithMediaSlice,
       TextWithMediaSliceDefaultPrimary,
       TextWithMediaSliceFullWidthImagePrimary,

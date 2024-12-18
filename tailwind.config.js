@@ -37,6 +37,8 @@ module.exports = {
           accent: "var(--red-bright)",
         },
 
+        "ligth-gray": "#E0E0E0",
+
         // Semantic (Purpose-based) approach
         action: {
           primary: "var(--red-base)",
@@ -46,6 +48,7 @@ module.exports = {
           red: "var(--red-deep)",
           gray: "var(--gray-base)",
           beige: "#f8f0ed",
+          snow: "#FDF8F5",
         },
         root: {
           highlight: "var(--red-bright)",
@@ -55,17 +58,29 @@ module.exports = {
         },
       },
       borderRadius: {
-        cta: "2.188rem", // 35px
+        cta: "var(--cta-border-radius)",
+        "product-card": "1.25rem",
       },
       spacing: {
         "nav-heigth": "var(--navigation-height)",
         "size-24": "1.5rem",
         "size-30": "1.875rem",
+        "size-35": "2.188rem",
+        "size-45": "2.813rem",
         "size-60": "3.75rem",
         "text-with-image-flow-content-mobile": "0.688rem",
         "text-with-image-flow-content-desktop": "1.375rem",
         "empresa-section-py-mobile": "2.5rem",
         "empresa-section-py-desktop": "4.375rem",
+        // em spacing
+        "em-size-35": "2.188rem",
+      },
+      transitionDuration: {
+        "cubic-bezier-base": "var(--transition-timing-cubic-bezier-base)",
+      },
+      willChange: {
+        "background-color": "background-color",
+        "box-shadow": "box-shadow",
       },
     },
   },

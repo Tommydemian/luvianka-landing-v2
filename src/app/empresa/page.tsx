@@ -1,12 +1,21 @@
-import { Suspense } from "react";
-import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
 import { Metadata } from "next";
+import { Suspense } from "react";
+import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 
-import { createClient } from "@/prismicio";
+// Slices
 import Hero from "@/slices/Hero";
 import CompanyOverview from "@/slices/CompanyOverview";
 import CompanyValues from "@/slices/CompanyValues";
+import ProductionFacilities from "@/slices/ProductionFacilities";
+import BrandShowcase from "@/slices/BrandShowcase";
+
+// Skeletons
+import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
+import { CompanyOverviewSkeleton } from "@/slices/CompanyOverview/components/CompanyOverview";
+import { CompanyValuesSkeleton } from "@/slices/CompanyValues/components/CompanyValuesSkeleton";
+import { ProductionFacilitiesSkeleton } from "@/slices/ProductionFacilities/components/ProductionFacilitiesSkeleton";
+import { BrandShowcaseSkeleton } from "@/slices/BrandShowcase/components/BrandShowcaseSkeleton";
 
 export default async function Page() {
   const client = createClient();
@@ -24,7 +33,7 @@ export default async function Page() {
             </Suspense>
           ),
           company_overview: (props) => (
-            <Suspense fallback={<HeroSkeleton />}>
+            <Suspense fallback={<CompanyOverviewSkeleton />}>
               <CompanyOverview
                 redDeerLogo={settings.data.red_deer_logo}
                 luviankaLogo={settings.data.logo}
@@ -33,8 +42,18 @@ export default async function Page() {
             </Suspense>
           ),
           company_values: (props) => (
-            <Suspense fallback={<HeroSkeleton />}>
+            <Suspense fallback={<CompanyValuesSkeleton />}>
               <CompanyValues {...props} />
+            </Suspense>
+          ),
+          production_facilities: (props) => (
+            <Suspense fallback={<ProductionFacilitiesSkeleton />}>
+              <ProductionFacilities {...props} />
+            </Suspense>
+          ),
+          brand_showcase: (props) => (
+            <Suspense fallback={<BrandShowcaseSkeleton />}>
+              <BrandShowcase {...props} />
             </Suspense>
           ),
         }}

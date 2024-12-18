@@ -1,0 +1,59 @@
+{
+  "id": "brand_showcase",
+  "type": "SharedSlice",
+  "name": "BrandShowcase",
+  "description": "BrandShowcase",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Titulo de la seccion "
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Descripcion de la seccion | Descripcion sobre RedDeer",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "lambare_logo": {
+          "type": "Image",
+          "config": {
+            "label": "Lambare Logo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "lvk_logo": {
+          "type": "Image",
+          "config": {
+            "label": "LVK logo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "295_logo": {
+          "type": "Image",
+          "config": {
+            "label": "295 Logo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

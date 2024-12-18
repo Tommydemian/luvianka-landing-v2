@@ -12,11 +12,26 @@ export const repositoryName =
  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
  */
 const routes: prismic.ClientConfig["routes"] = [
-  { type: "page", path: "/", uid: "home" },
-  { type: "page", path: "/:uid" },
-  { type: "page", path: "/empresa", uid: "empresa" },
-  { type: "page", path: "/calidad", uid: "calidad" },
-  { type: "page", path: "/productos", uid: "productos" },
+  {
+    type: "home",
+    path: "/",
+  },
+  {
+    type: "productos",
+    path: "/productos/:uid",
+  },
+  {
+    type: "empresa",
+    path: "/empresa",
+  },
+  {
+    type: "calidad",
+    path: "/calidad",
+  },
+  {
+    type: "contactanos",
+    path: "/contactanos",
+  },
 ];
 
 /**
@@ -38,4 +53,26 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   prismicNext.enableAutoPreviews({ client });
 
   return client;
+};
+
+/**
+ * Resolves a Prismic document to a URL.
+ *
+ * @param doc - The Prismic document.
+ */
+export const linkResolver = (doc: prismic.PrismicDocument): string => {
+  switch (doc.type) {
+    case "home":
+      return "/";
+    case "productos":
+      return `/productos/${doc.uid}`;
+    case "empresa":
+      return "/empresa";
+    case "calidad":
+      return "/calidad";
+    case "contactanos":
+      return "/contactanos";
+    default:
+      return "/";
+  }
 };
