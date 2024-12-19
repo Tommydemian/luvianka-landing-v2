@@ -107,7 +107,7 @@
     @apply absolute inset-0 top-nav-heigth;
   }
   .nav-transition-base {
-    @apply transition-menu duration-menu ease-menu transform-gpu;
+    @apply transform-gpu transition-menu duration-menu ease-menu;
   }
 
   .nav-link {
@@ -147,6 +147,10 @@
 }
 
 @layer utilities {
+  /* HTML */
+  .prevent-scroll {
+    @apply overflow-hidden;
+  }
   /* Typography */
   .text-responsive-base {
     @apply text-base md:text-lg;
@@ -252,5 +256,9 @@
   /* Product Dropdown */
   .product-dropdown-top {
     top: calc(100% + 1rem);
+  }
+
+  .clip-circle {
+    clip-path: circle();
   }
 }

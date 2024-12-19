@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 
 import { Container } from "../../ui/Container";
 import { VSpace } from "../../ui/VSpace";
-import { Dropdown } from "../../ui/Dropdown";
 import { NavLinkItem } from "./NavLinkItem";
 
 import { usePathname } from "next/navigation";
-import { useProductsNavigationContext } from "@/app/contexts/ProductsNavigationContext";
 // utils
 import { isActiveLink } from "@/app/lib/utils/isActiveLink";
 import { cn } from "@/app/lib/utils";
@@ -40,6 +38,14 @@ export const Navigation: React.FC<NavigationProps> = ({
     setHasMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("prevent-scroll");
+    } else {
+      document.body.classList.remove("prevent-scroll");
+    }
+  }, [isMenuOpen]);
+
   return (
     <nav
       aria-label="Main Navigation"
@@ -58,14 +64,14 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         // Open state with transitions
         isMenuOpen &&
-          "fixed z-50 max-md:pointer-events-auto max-md:opacity-100 max-md:transition-all max-md:duration-300",
+          "fixed z-50 overflow-y-auto max-md:pointer-events-auto max-md:opacity-100 max-md:transition-all max-md:duration-300",
       )}
     >
       <Container>
         <VSpace>
           <ul
             role="list"
-            className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-center"
+            className="relative flex flex-col items-start gap-6 max-md:mb-[7.5rem] md:flex-row md:items-center md:justify-center"
           >
             {navItems?.map((link, index) => {
               const isActive = isActiveLink(link, pathname);

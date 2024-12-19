@@ -504,24 +504,6 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
-interface ProductListDocumentData {}
-
-/**
- * Product List document from Prismic
- *
- * - **API ID**: `product_list`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProductListDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ProductListDocumentData>,
-    "product_list",
-    Lang
-  >;
-
 type ProductosDocumentDataSlicesSlice = never;
 
 /**
@@ -792,7 +774,6 @@ export type AllDocumentTypes =
   | HomeDocument
   | PageDocument
   | ProductDocument
-  | ProductListDocument
   | ProductosDocument
   | SettingsDocument;
 
@@ -1509,8 +1490,6 @@ declare module "@prismicio/client" {
       ProductDocument,
       ProductDocumentData,
       ProductDocumentDataProductVarietiesItem,
-      ProductListDocument,
-      ProductListDocumentData,
       ProductosDocument,
       ProductosDocumentData,
       ProductosDocumentDataSlicesSlice,
