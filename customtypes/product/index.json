@@ -96,6 +96,13 @@
             }
           }
         }
+      },
+      "list_number": {
+        "type": "Number",
+        "config": {
+          "label": "List Number",
+          "placeholder": "Numero en la lista de productos | Orden"
+        }
       }
     }
   }

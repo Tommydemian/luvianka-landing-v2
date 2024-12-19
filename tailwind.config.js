@@ -63,9 +63,11 @@ module.exports = {
       borderRadius: {
         cta: "var(--cta-border-radius)",
         "product-card": "1.25rem",
+        "product-dropdown": "1rem",
       },
       spacing: {
         "nav-heigth": "var(--navigation-height)",
+        "size-16": "1rem",
         "size-24": "1.5rem",
         "size-30": "1.875rem",
         "size-35": "2.188rem",
@@ -77,9 +79,7 @@ module.exports = {
         "empresa-section-py-desktop": "4.375rem",
         // em spacing
         "em-size-35": "2.188rem",
-      },
-      transitionDuration: {
-        "cubic-bezier-base": "var(--transition-timing-cubic-bezier-base)",
+        "product-dropdown-top": "var(--product-dropdown-top)",
       },
       willChange: {
         "background-color": "background-color",
@@ -87,6 +87,35 @@ module.exports = {
       },
       boxShadow: {
         cta: "var(--cta-shadow)",
+        "product-dropdown": "var(--product-dropdown-box-shadow)",
+      },
+      transitionProperty: {
+        menu: "opacity, transform",
+        cta: "background-color, box-shadow",
+        "product-dropdown": "visibility, opacity, transform",
+      },
+      transitionTimingFunction: {
+        cubic: "cubic-bezier(0.22, 0, 0.26, 1)",
+        // Semantic
+        menu: "cubic-bezier(0.22, 0, 0.36, 1)",
+      },
+      transitionDuration: {
+        menu: "300ms",
+        150: "150ms",
+      },
+      keyframes: {
+        "menu-in": {
+          "0%": { opacity: "0", transform: "translateY(-8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "menu-out": {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(-8px)" },
+        },
+      },
+      animation: {
+        "menu-in": "menu-in 300ms cubic-bezier(0.22, 0, 0.36, 1)",
+        "menu-out": "menu-out 300ms cubic-bezier(0.22, 0, 0.36, 1)",
       },
     },
   },

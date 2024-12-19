@@ -25,7 +25,7 @@ const TextWithMedia = ({ slice }: TextWithMediaProps): JSX.Element => {
       className={cn(
         isVariant
           ? "bg-surface-red text-root-secondary"
-          : "py-size-30 md:py-[7.5rem]",
+          : "py-size-30 md:pb-[7.875rem] md:pt-[6rem]",
       )}
     >
       <div className={cn(!isVariant && "container")}>

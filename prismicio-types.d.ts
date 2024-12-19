@@ -475,6 +475,17 @@ interface ProductDocumentData {
   product_varieties: prismic.GroupField<
     Simplify<ProductDocumentDataProductVarietiesItem>
   >;
+
+  /**
+   * List Number field in *Product*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Numero en la lista de productos | Orden
+   * - **API ID Path**: product.list_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  list_number: prismic.NumberField;
 }
 
 /**

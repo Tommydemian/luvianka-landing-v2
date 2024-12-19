@@ -34,8 +34,8 @@ export const SubFooter: React.FC<SubFooterProps> = ({
     <section className="bg-black" aria-label="Social media and Legal">
       <Container>
         <VSpace>
-          <div className="md:flex md:items-center md:justify-between">
-            <div className="mb-8 flex items-center justify-center gap-4 md:mb-0">
+          <div className="md:flex-base-between">
+            <div className="flex-base mb-8 gap-4 md:mb-0">
               {socialMediaLinks.map((link, index) => {
                 return (
                   <PrismicNextLink

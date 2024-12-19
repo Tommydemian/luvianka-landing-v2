@@ -22,7 +22,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
     <div
       className={cn(
         "center-absolute absolute top-0 flex w-full flex-col items-center justify-center space-y-4 max-md:px-[1.75rem]",
-        isVariant && "hero-content-gradient z-20 w-10/12 items-start p-[2em]",
+        isVariant && "hero-content-gradient z-0 w-10/12 items-start p-[2em]",
       )}
       aria-label="Hero content wrapper"
     >

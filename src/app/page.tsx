@@ -1,17 +1,20 @@
-import { Metadata } from "next";
-import { Suspense } from "react";
-
+import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 
-import { createClient } from "@/prismicio";
+import { Metadata } from "next";
+import { Suspense } from "react";
 
+// Skeletons
 import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
 import { TextWithMediaSkeleton } from "@/slices/TextWithMedia/components/TextWithMediaSkeleton";
-
+// Slices
 import Hero from "@/slices/Hero";
 import TextWithMedia from "@/slices/TextWithMedia";
 import ProductShowcase from "@/slices/ProductShowcase";
+
+import { sortProducts } from "./lib/utils/sortProducts";
+
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -21,9 +24,7 @@ import ProductShowcase from "@/slices/ProductShowcase";
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const home = await client.getByUID("page", "home");
-  const products = await client.getAllByType("product");
-
-  console.log(products, "products");
+  // const products = await client.getAllByType("product");
 
   return {
     title: prismic.asText(home.data.title),
@@ -39,6 +40,7 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "home");
   const products = await client.getAllByType("product");
+  const sortedProducts = sortProducts(products);
 
   return (
     <SliceZone
@@ -51,7 +53,7 @@ export default async function Index() {
         ),
         product_showcase: (props) => (
           <Suspense fallback={<HeroSkeleton />}>
-            <ProductShowcase products={products} {...props} />
+            <ProductShowcase products={sortedProducts} {...props} />
           </Suspense>
         ),
 

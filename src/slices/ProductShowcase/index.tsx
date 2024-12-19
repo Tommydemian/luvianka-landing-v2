@@ -42,7 +42,7 @@ const ProductShowcase = ({
             <DecorativeUnderline className="absolute left-[5rem] md:left-[10rem]" />
           </div>
 
-          <div className="mx-auto grid max-w-fit grid-cols-3 gap-8 pt-size-45">
+          <div className="mx-auto grid max-w-fit grid-cols-1 gap-8 pt-size-45 md:grid-cols-3">
             {products.map((product) => (
               <ProductCard
                 key={product.data.product_title}

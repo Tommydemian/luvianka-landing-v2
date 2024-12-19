@@ -17,7 +17,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative"
+      className="relative z-0"
     >
       <div className="hero-overlay h-[75vh] w-full max-md:landscape:h-screen">
         <PrismicNextImage

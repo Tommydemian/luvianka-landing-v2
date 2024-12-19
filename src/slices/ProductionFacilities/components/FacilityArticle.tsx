@@ -33,7 +33,7 @@ export const FacilityArticle: React.FC<FacilityArticleProps> = ({
         field={description}
         components={{
           paragraph: ({ children }) => (
-            <p className="text-base leading-relaxed md:text-lg">{children}</p>
+            <p className="text-responsive-base leading-relaxed">{children}</p>
           ),
         }}
       />

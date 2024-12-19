@@ -41,7 +41,7 @@ export default async function Index() {
         field={contact.data.page_description}
         components={{
           paragraph: ({ children }) => (
-            <p className="mx-auto py-size-30 text-center text-base text-gray-500 md:text-lg">
+            <p className="text-responsive-base mx-auto py-size-30 text-center text-gray-500">
               {children}
             </p>
           ),
