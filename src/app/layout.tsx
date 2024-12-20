@@ -49,6 +49,19 @@ export default function RootLayout({
       lang="en"
       className={`${oswald.variable} ${src_sans.variable} ${grand_hotel.variable}`}
     >
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon-96x96.png"
+        />
+        <link rel="manifest" href="/web-app-manifest-512x512.json" />
+        <link rel="manifest" href="/web-app-manifest-192x192.json" />
+
+        <link rel="alternate icon" href="/favicon-96x96.png" />
+      </head>
       <body>
         <Header />
         <main>{children}</main>
