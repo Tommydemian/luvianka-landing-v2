@@ -359,6 +359,16 @@ export type PageDocument<Lang extends string = string> =
  */
 export interface ProductDocumentDataProductVarietiesItem {
   /**
+   * Product Var Title field in *Product → Product Varieties*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la var del producto
+   * - **API ID Path**: product.product_varieties[].product_var_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  product_var_title: prismic.KeyTextField;
+
+  /**
    * Product Var Image field in *Product → Product Varieties*
    *
    * - **Field Type**: Image
