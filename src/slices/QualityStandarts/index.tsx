@@ -31,28 +31,8 @@ const QualityStandarts = ({ slice }: QualityStandartsProps): JSX.Element => {
 
       <Container>
         <VSpace>
-          {/* Header */}
-          <header className="relative mx-auto max-w-4xl text-center">
-            <h2 className="home-section-title-base pb-4">
-              {slice.primary.section_title}{" "}
-              <span className="text-red-primary">
-                {slice.primary.highlighted_word}
-              </span>
-            </h2>
-            <PrismicRichText
-              field={slice.primary.section_description}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className="text-lg leading-relaxed text-gray-700">
-                    {children}
-                  </p>
-                ),
-              }}
-            />
-          </header>
-
           {/* Content Grid */}
-          <div className="mt-16 grid gap-8 md:grid-cols-2 md:gap-12">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             {/* HACCP Badge */}
             <div className="relative flex items-center justify-center">
               <div className="relative w-4/5 max-w-md transform transition-transform duration-300 hover:scale-105">
@@ -64,7 +44,26 @@ const QualityStandarts = ({ slice }: QualityStandartsProps): JSX.Element => {
             </div>
 
             {/* Standards List */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center space-y-4 text-left">
+              {/* Header */}
+              <header className="relative mx-auto max-w-4xl">
+                <h2 className="home-section-title-base pb-4">
+                  {slice.primary.section_title}{" "}
+                  <span className="text-red-primary">
+                    {slice.primary.highlighted_word}
+                  </span>
+                </h2>
+                <PrismicRichText
+                  field={slice.primary.section_description}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="text-lg leading-relaxed text-gray-700">
+                        {children}
+                      </p>
+                    ),
+                  }}
+                />
+              </header>
               <ul className="space-y-6">
                 <PrismicRichText
                   field={slice.primary.section_list}
