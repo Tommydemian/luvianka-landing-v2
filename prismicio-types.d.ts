@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type CalidadDocumentDataSlicesSlice = HeroSlice;
+type CalidadDocumentDataSlicesSlice =
+  | ProductionAndQualitySlice
+  | QualityStandartsSlice
+  | HeroSlice;
 
 /**
  * Content for Calidad documents
@@ -1185,6 +1188,71 @@ export type ProductShowcaseSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProductionAndQuality → Default → Primary*
+ */
+export interface ProductionAndQualitySliceDefaultPrimary {
+  /**
+   * Section Image field in *ProductionAndQuality → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_and_quality.default.primary.section_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  section_image: prismic.ImageField<never>;
+
+  /**
+   * Section Title field in *ProductionAndQuality → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: production_and_quality.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *ProductionAndQuality → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la seccion
+   * - **API ID Path**: production_and_quality.default.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ProductionAndQuality Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductionAndQualitySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductionAndQualitySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductionAndQuality*
+ */
+type ProductionAndQualitySliceVariation = ProductionAndQualitySliceDefault;
+
+/**
+ * ProductionAndQuality Shared Slice
+ *
+ * - **API ID**: `production_and_quality`
+ * - **Description**: ProductionAndQuality
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductionAndQualitySlice = prismic.SharedSlice<
+  "production_and_quality",
+  ProductionAndQualitySliceVariation
+>;
+
+/**
  * Item in *ProductionFacilities → Default → Primary → facilities*
  */
 export interface ProductionFacilitiesSliceDefaultPrimaryFacilitiesItem {
@@ -1294,6 +1362,91 @@ type ProductionFacilitiesSliceVariation = ProductionFacilitiesSliceDefault;
 export type ProductionFacilitiesSlice = prismic.SharedSlice<
   "production_facilities",
   ProductionFacilitiesSliceVariation
+>;
+
+/**
+ * Primary content in *QualityStandarts → Default → Primary*
+ */
+export interface QualityStandartsSliceDefaultPrimary {
+  /**
+   * Section Image field in *QualityStandarts → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quality_standarts.default.primary.section_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  section_image: prismic.ImageField<never>;
+
+  /**
+   * Section Title field in *QualityStandarts → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de la seccion
+   * - **API ID Path**: quality_standarts.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Highlighted Word field in *QualityStandarts → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Palabra especifica del titulo en Rojo
+   * - **API ID Path**: quality_standarts.default.primary.highlighted_word
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  highlighted_word: prismic.KeyTextField;
+
+  /**
+   * Section Description field in *QualityStandarts → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Descripcion de la seccion
+   * - **API ID Path**: quality_standarts.default.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_description: prismic.RichTextField;
+
+  /**
+   * Section List field in *QualityStandarts → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Lista de la seccion
+   * - **API ID Path**: quality_standarts.default.primary.section_list
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_list: prismic.RichTextField;
+}
+
+/**
+ * Default variation for QualityStandarts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QualityStandartsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<QualityStandartsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *QualityStandarts*
+ */
+type QualityStandartsSliceVariation = QualityStandartsSliceDefault;
+
+/**
+ * QualityStandarts Shared Slice
+ *
+ * - **API ID**: `quality_standarts`
+ * - **Description**: QualityStandarts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QualityStandartsSlice = prismic.SharedSlice<
+  "quality_standarts",
+  QualityStandartsSliceVariation
 >;
 
 /**
@@ -1520,11 +1673,19 @@ declare module "@prismicio/client" {
       ProductShowcaseSliceDefaultPrimary,
       ProductShowcaseSliceVariation,
       ProductShowcaseSliceDefault,
+      ProductionAndQualitySlice,
+      ProductionAndQualitySliceDefaultPrimary,
+      ProductionAndQualitySliceVariation,
+      ProductionAndQualitySliceDefault,
       ProductionFacilitiesSlice,
       ProductionFacilitiesSliceDefaultPrimaryFacilitiesItem,
       ProductionFacilitiesSliceDefaultPrimary,
       ProductionFacilitiesSliceVariation,
       ProductionFacilitiesSliceDefault,
+      QualityStandartsSlice,
+      QualityStandartsSliceDefaultPrimary,
+      QualityStandartsSliceVariation,
+      QualityStandartsSliceDefault,
       TextWithMediaSlice,
       TextWithMediaSliceDefaultPrimary,
       TextWithMediaSliceFullWidthImagePrimary,

@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "production_and_quality": {
+              "type": "SharedSlice"
+            },
+            "quality_standarts": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             }

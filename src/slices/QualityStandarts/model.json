@@ -1,0 +1,59 @@
+{
+  "id": "quality_standarts",
+  "type": "SharedSlice",
+  "name": "QualityStandarts",
+  "description": "QualityStandarts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_image": {
+          "type": "Image",
+          "config": {
+            "label": "Section Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Titulo de la seccion "
+          }
+        },
+        "highlighted_word": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Word",
+            "placeholder": "Palabra especifica del titulo en Rojo"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Descripcion de la seccion",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "section_list": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section List",
+            "placeholder": "Lista de la seccion",
+            "allowTargetBlank": true,
+            "multi": "list-item,strong"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,24 +1,16 @@
-// import { createClient } from "@/prismicio";
-// export default async function CalidadPage() {
-//   const client = createClient();
-//   const qualityPage = await client.getSingle("calidad");
-
-//   return <h1>{qualityPage.data.titulo_de_prueba}</h1>;
-// }
-
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { SliceZone } from "@prismicio/react";
-import * as prismic from "@prismicio/client";
-
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
 
-// This component renders your homepage.
-//
-// Use Next's generateMetadata function to render page metadata.
-//
-// Use the SliceZone to render the content of the page.
+// Slices
+import Hero from "@/slices/Hero";
+import QualityStandarts from "@/slices/QualityStandarts";
+
+// Skeletons
+import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
+import ProductionAndQuality from "@/slices/ProductionAndQuality";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -39,5 +31,18 @@ export default async function Index() {
   const client = createClient();
   const quality = await client.getSingle("calidad");
 
-  return <SliceZone slices={quality.data.slices} components={components} />;
+  return (
+    <SliceZone
+      slices={quality.data.slices}
+      components={{
+        hero: (props) => (
+          <Suspense fallback={<HeroSkeleton />}>
+            <Hero {...props} />
+          </Suspense>
+        ),
+        quality_standarts: (props) => <QualityStandarts {...props} />,
+        production_and_quality: (props) => <ProductionAndQuality {...props} />,
+      }}
+    />
+  );
 }

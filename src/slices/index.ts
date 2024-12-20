@@ -8,6 +8,8 @@ export const components = {
   company_values: dynamic(() => import("./CompanyValues")),
   hero: dynamic(() => import("./Hero")),
   product_showcase: dynamic(() => import("./ProductShowcase")),
+  production_and_quality: dynamic(() => import("./ProductionAndQuality")),
   production_facilities: dynamic(() => import("./ProductionFacilities")),
+  quality_standarts: dynamic(() => import("./QualityStandarts")),
   text_with_media: dynamic(() => import("./TextWithMedia")),
 };
