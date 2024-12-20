@@ -27,14 +27,6 @@ export const ClientWrapper: React.FC<ClienWrapperProps> = ({ products }) => {
   const categories = useMemo(() => products.map((el) => el.data), [products]); // Categories
 
   useEffect(() => {
-    console.log(
-      productPath?.toLocaleLowerCase().trim().replace(/-/g, " "),
-      "TOFD",
-    );
-    console.log("TEST PRODUCT");
-  }, [categories, productPath]);
-
-  useEffect(() => {
     const activeCategory = categories.find(
       (el) =>
         el.product_title?.toLocaleLowerCase().trim() ===
@@ -44,10 +36,6 @@ export const ClientWrapper: React.FC<ClienWrapperProps> = ({ products }) => {
       setSelectedCategory(activeCategory);
     }
   }, [categories, pathname]);
-
-  useEffect(() => {
-    console.log(selectedCategory, "heredog");
-  }, [selectedCategory]);
 
   return (
     <>
