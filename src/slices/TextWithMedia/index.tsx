@@ -61,6 +61,8 @@ const TextWithMedia = ({ slice }: TextWithMediaProps): JSX.Element => {
             decorativeText={slice.primary.decorative_text}
             sectionDescription={slice.primary.section_description}
             sectionTitle={slice.primary.section_title}
+            tickLineOne={isVariant ? slice.primary.tick_line_1 : undefined}
+            tickLineTwo={isVariant ? slice.primary.tick_line_2 : undefined}
             isVariant={isVariant}
           />
         </div>

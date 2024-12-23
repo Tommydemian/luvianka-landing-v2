@@ -1572,6 +1572,26 @@ export interface TextWithMediaSliceFullWidthImagePrimary {
   section_description: prismic.RichTextField;
 
   /**
+   * Tick Line 1 field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Line con icono de tilde 1
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.tick_line_1
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tick_line_1: prismic.KeyTextField;
+
+  /**
+   * Tick Line 2 field in *TextWithMedia → fullWidthImage → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Line con icono de tilde 2
+   * - **API ID Path**: text_with_media.fullWidthImage.primary.tick_line_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tick_line_2: prismic.KeyTextField;
+
+  /**
    * Button Link field in *TextWithMedia → fullWidthImage → Primary*
    *
    * - **Field Type**: Link

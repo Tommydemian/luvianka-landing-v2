@@ -118,6 +118,20 @@
             "multi": "paragraph,em,hyperlink,image,embed,list-item,o-list-item,strong"
           }
         },
+        "tick_line_1": {
+          "type": "Text",
+          "config": {
+            "label": "Tick Line 1",
+            "placeholder": "Line con icono de tilde 1 "
+          }
+        },
+        "tick_line_2": {
+          "type": "Text",
+          "config": {
+            "label": "Tick Line 2",
+            "placeholder": "Line con icono de tilde 2"
+          }
+        },
         "button_link": {
           "type": "Link",
           "config": {

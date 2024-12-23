@@ -201,6 +201,16 @@
 					"url": "http://google.com",
 					"text": "wind"
 				}
+			},
+			"tick_line_1": {
+				"__TYPE__": "FieldContent",
+				"value": "together",
+				"type": "Text"
+			},
+			"tick_line_2": {
+				"__TYPE__": "FieldContent",
+				"value": "her",
+				"type": "Text"
 			}
 		},
 		"items": [

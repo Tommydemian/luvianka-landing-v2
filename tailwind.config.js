@@ -16,6 +16,7 @@ module.exports = {
       xl: "1.25rem",
       "xl.5": "1.5rem",
       "2xl": "2rem",
+      "2xl.5": "2.5rem",
       "3xl": "3rem",
       "4xl": "4rem",
     },
@@ -29,6 +30,9 @@ module.exports = {
         // Semantic
         title: ["var(--font-oswald)"],
         decorative: ["var(--font-grand-hotel)"],
+      },
+      screens: {
+        "mobile-base": "390px",
       },
       colors: {
         // Descriptive (Visual-based) approach

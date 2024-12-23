@@ -19,9 +19,7 @@ export const DesktopProductDropdown: React.FC<DesktopProductDropdownProps> = ({
       <div data-invisible-bridge className="absolute left-0 h-4 w-full" />
       <div
         className={cn(
-          "absolute left-0 top-product-dropdown-top z-50 w-max bg-white px-size-35 py-size-16",
-          "rounded-product-dropdown shadow-product-dropdown",
-          "transform transition-product-dropdown duration-300 ease-cubic",
+          "product-dropdown-container-base px-size-35 py-size-16",
           isDropdownOpen
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-6 opacity-0",

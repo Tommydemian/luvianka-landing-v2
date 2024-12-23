@@ -1,9 +1,11 @@
 import React from "react";
+import { CircleCheckBigIcon } from "lucide-react";
 import { Content } from "@prismicio/client";
 import { cn } from "@/app/lib/utils";
 import { PrismicRichText } from "@prismicio/react";
 
 import { CTA } from "@/app/components/ui/CTA";
+import { KeyTextField } from "@prismicio/client";
 
 type TextWithMediaTextContentProps = {
   decorativeText: Content.TextWithMediaSliceDefaultPrimary["decorative_text"];
@@ -11,11 +13,30 @@ type TextWithMediaTextContentProps = {
   sectionDescription: Content.TextWithMediaSliceDefaultPrimary["section_description"];
   cta: Content.TextWithMediaSliceDefaultPrimary["button_link"];
   isVariant: boolean;
+  tickLineOne:
+    | Content.TextWithMediaSliceFullWidthImagePrimary["tick_line_1"]
+    | undefined;
+  tickLineTwo:
+    | Content.TextWithMediaSliceFullWidthImagePrimary["tick_line_2"]
+    | undefined;
 };
 
 export const TextWithMediaTextContent: React.FC<
   TextWithMediaTextContentProps
-> = ({ cta, decorativeText, sectionDescription, sectionTitle, isVariant }) => {
+> = ({
+  cta,
+  decorativeText,
+  sectionDescription,
+  sectionTitle,
+  isVariant,
+  tickLineOne,
+  tickLineTwo,
+}) => {
+  const tickLineObj = {
+    0: tickLineOne,
+    1: tickLineTwo,
+  };
+
   return (
     <div
       className={cn(
@@ -43,6 +64,19 @@ export const TextWithMediaTextContent: React.FC<
           ),
         }}
       />
+      {tickLineOne && tickLineTwo ? (
+        <ul className="flex flex-col gap-4 max-md:py-4">
+          {Object.values(tickLineObj).map((el) => (
+            <li key={el} className="flex gap-4 text-lg">
+              <span>
+                <CircleCheckBigIcon />
+              </span>
+              {el}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
       <CTA field={cta} variant={isVariant ? "secondary" : "primary"} />
     </div>
   );
