@@ -39,10 +39,16 @@ module.exports = {
         red: {
           primary: "var(--red-base)",
           "primary-hover": "var(--color-primary-hover)",
+          "primary-active": "#c41f39",
+          "primary-focus": "#ffd1d8",
 
           secondary: "var(--red-deep)",
           accent: "var(--red-bright)",
         },
+
+        "black-hover": "#333333",
+        "black-active": "#1a1a1a",
+        "black-focus": "#666666",
 
         "ligth-gray": "#E0E0E0",
 
@@ -106,6 +112,7 @@ module.exports = {
       transitionDuration: {
         menu: "300ms",
         150: "150ms",
+        600: "600ms",
       },
       keyframes: {
         "menu-in": {

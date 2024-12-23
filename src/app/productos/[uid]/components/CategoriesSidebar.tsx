@@ -5,7 +5,7 @@
 // import { CategoriesSidebarSkeleton } from "./skeletons/CategoriesSidebarSkeleton";
 // import { ChevronDown } from "lucide-react";
 // import { useDropdown } from "../hooks/useDropdown";
-// import { cn } from "@/app/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { PrismicNextLink } from "@prismicio/next";
 import type { KeyTextField } from "@prismicio/client";
 import { ProductDocument } from "@/prismicio-types";
@@ -62,25 +62,58 @@ type CategoriesSidebarProps = {
 //   );
 // };
 
-import React, { useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { useBreakpoint } from "@/app/lib/hooks/useBreakpoint";
 
 export const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
   categories,
   activeCategory,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isDesktop = useBreakpoint("(min-width: 768px)");
+
+  useEffect(() => {
+    const dropdown = document.querySelector(".dropdown__menu");
+    if (isDesktop) {
+      dropdown?.classList.remove("dropdown__menu--open");
+      setIsOpen(false);
+    }
+  }, [isDesktop]);
+
+  const toggleDropdown = useCallback(() => {
+    const menu = document.querySelector(".dropdown__menu");
+    // Add transition class BEFORE changing state
+    menu?.classList.add("dropdown__menu-animating");
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  useEffect(() => {
+    const menu = document.querySelector(".dropdown__menu");
+
+    const handleTransitionEnd = (e: Event) => {
+      if (e instanceof TransitionEvent && e.propertyName === "opacity") {
+        menu?.classList.remove("dropdown__menu-animating");
+      }
+    };
+
+    menu?.addEventListener("transitionend", handleTransitionEnd);
+    return () =>
+      menu?.removeEventListener("transitionend", handleTransitionEnd);
+  }, []);
 
   return (
     <div className="dropdown">
       <div
         className={`dropdown__header ${isOpen ? "dropdown__header--active" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleDropdown}
       >
         <h2 className="dropdown__title">Categorías</h2>
-        <ChevronDown
-          className={`dropdown__icon ${isOpen ? "dropdown__icon--open" : ""}`}
-        />
+        <div className="md:hidden">
+          <ChevronDown
+            className={`dropdown__icon ${isOpen ? "dropdown__icon--open" : ""}`}
+          />
+        </div>
       </div>
 
       <div className={`dropdown__menu ${isOpen ? "dropdown__menu--open" : ""}`}>

@@ -45,6 +45,12 @@ export const useDropdown = () => {
   const isDesktop = useBreakpoint("(min-width: 768px)");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (!isDesktop) {
+      setIsOpen(false);
+    }
+  }, [isDesktop]);
+
   const toggleDropdown = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);

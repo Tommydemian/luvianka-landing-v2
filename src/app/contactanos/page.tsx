@@ -1,13 +1,13 @@
 import { Metadata } from "next";
-
-import { SliceZone } from "@prismicio/react";
-import * as prismic from "@prismicio/client";
-
+import { Suspense } from "react";
+import { SliceZone, PrismicRichText } from "@prismicio/react";
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
 
 import { ContactForm } from "../components/forms/ContactForm";
-import { PrismicRichText } from "@prismicio/react";
+import { HeroSkeleton } from "@/slices/Hero/components/HeroSkeleton";
+
+// Slices
+import Hero from "@/slices/Hero";
 
 // This component renders your homepage.
 //
@@ -36,7 +36,16 @@ export default async function Index() {
 
   return (
     <>
-      <SliceZone slices={contact.data.slices} components={components} />
+      <SliceZone
+        slices={contact.data.slices}
+        components={{
+          hero: (props) => (
+            <Suspense fallback={<HeroSkeleton />}>
+              <Hero {...props} />
+            </Suspense>
+          ),
+        }}
+      />
       <PrismicRichText
         field={contact.data.page_description}
         components={{

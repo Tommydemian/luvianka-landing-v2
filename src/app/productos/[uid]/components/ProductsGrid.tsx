@@ -37,7 +37,7 @@ const ProductGridContent: React.FC<ProductGridContentProps> = ({
   category,
 }) => (
   <div className="space-y-4 md:space-y-8">
-    <h1 className="max-mobile-base:text-2xl.5 mobile-base:text-3xl font-title font-semibold capitalize">
+    <h1 className="font-title font-semibold capitalize max-mobile-base:text-2xl.5 mobile-base:text-3xl">
       {category.product_title}
     </h1>
 

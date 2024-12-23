@@ -57,9 +57,6 @@ export default function RootLayout({
           sizes="96x96"
           href="/favicon-96x96.png"
         />
-        <link rel="manifest" href="/web-app-manifest-512x512.json" />
-        <link rel="manifest" href="/web-app-manifest-192x192.json" />
-
         <link rel="alternate icon" href="/favicon-96x96.png" />
       </head>
       <body>

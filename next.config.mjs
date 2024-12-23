@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  generateManifest: false,
-};
+const nextConfig = {};
 
 export default nextConfig;

@@ -26,7 +26,7 @@ export const DetailedProductCard: React.FC<DetailedProductCardProps> = ({
   return (
     <article className="space-y-4 p-4">
       {/* Image container */}
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-surface-snow p-4">
+      <div className="relative overflow-hidden rounded-lg border border-ligth-gray bg-surface-snow p-[.25em]">
         <PrismicNextImage
           priority={true}
           field={image}
