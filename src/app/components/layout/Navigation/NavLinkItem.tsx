@@ -10,24 +10,30 @@ import { cn } from "@/app/lib/utils";
 import { useProductsNavigationContext } from "@/app/contexts/ProductsNavigationContext";
 
 import type { LinkField } from "@prismicio/client";
-import { useDropdown } from "./ProductDropdown/hooks/useDropdown";
 
 type NavLinkItemProps = {
   link: LinkField;
   isActive: boolean;
   index: number;
+  toggleState: () => void;
+  handleStateClose: () => void;
+  handleStateOPen: () => void;
+  isOpen: boolean;
+  isDesktop: boolean;
 };
 
 export const NavLinkItem: React.FC<NavLinkItemProps> = React.memo(
-  function NavLinkItem({ link, isActive, index }) {
+  function NavLinkItem({
+    link,
+    isActive,
+    index,
+    handleStateClose: handleDropdownClose,
+    handleStateOPen: handleDropdownOpen,
+    isOpen: isDropdownOpen,
+    toggleState: toggleDropdown,
+    isDesktop,
+  }) {
     const { productsRef } = useProductsNavigationContext();
-    const {
-      handleDropdownClose,
-      handleDropdownOpen,
-      isDesktop,
-      isDropdownOpen,
-      toggleDropdown,
-    } = useDropdown();
 
     if (index === 0) {
       return (

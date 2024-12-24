@@ -1,10 +1,4 @@
 "use client";
-
-// import React, { useEffect, useState } from "react";
-// import { SideBarNavDropdown } from "./SideBarNavDropdown";
-// import { CategoriesSidebarSkeleton } from "./skeletons/CategoriesSidebarSkeleton";
-// import { ChevronDown } from "lucide-react";
-// import { useDropdown } from "../hooks/useDropdown";
 import { cn } from "@/app/lib/utils";
 import { PrismicNextLink } from "@prismicio/next";
 import type { KeyTextField } from "@prismicio/client";
@@ -15,63 +9,16 @@ type CategoriesSidebarProps = {
   activeCategory: KeyTextField | undefined;
 };
 
-// export const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
-//   categories,
-//   activeCategory,
-// }) => {
-//   const { dropdownRef, toggleDropdown, isDesktop, isOpen } = useDropdown();
-
-//   return (
-//     <aside className="w-full max-w-xs space-y-2">
-//       {isDesktop ? (
-//         <>
-//           <h2 className="font-title text-xl font-semibold">Categorías</h2>
-
-//           <SideBarNavDropdown
-//             activeCategory={activeCategory}
-//             categories={categories}
-//             isDropdownOpen={isOpen}
-//           />
-//         </>
-//       ) : (
-//         <div className="md:hidden">
-//           <div
-//             onClick={toggleDropdown}
-//             id="p-dropdown"
-//             ref={dropdownRef}
-//             className="relative mb-4 rounded-lg border border-ligth-gray p-2 max-md:flex max-md:items-end max-md:justify-between"
-//           >
-//             <h2 className="font-title text-xl font-semibold">Categorías</h2>
-//             <span>
-//               <ChevronDown
-//                 className={cn(
-//                   "transition-transform duration-200",
-//                   isOpen && "rotate-180",
-//                 )}
-//               />
-//             </span>
-//             <SideBarNavDropdown
-//               activeCategory={activeCategory}
-//               categories={categories}
-//               isDropdownOpen={isOpen}
-//             />
-//           </div>
-//         </div>
-//       )}
-//     </aside>
-//   );
-// };
-
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import { useBreakpoint } from "@/app/lib/hooks/useBreakpoint";
+
+import { useToggle } from "@/app/components/layout/Navigation/hooks/useToggle";
 
 export const CategoriesSidebar: React.FC<CategoriesSidebarProps> = ({
   categories,
   activeCategory,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const isDesktop = useBreakpoint("(min-width: 768px)");
+  const { isDesktop, setState: setIsOpen, state: isOpen } = useToggle(false);
 
   useEffect(() => {
     const dropdown = document.querySelector(".dropdown__menu");
