@@ -7,7 +7,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { Container } from "@/components/ui/Container";
 import { VSpace } from "../../ui/VSpace";
 import { CTA } from "../../ui/CTA";
-import { MobileWrapper } from "../Navigation/MobileWrapper";
+import { NavigationClientWrapper } from "../Navigation/NavigationClientWrapper";
 import Link from "next/link";
 
 import { ProductsNavigationContextProvider } from "@/app/contexts/ProductsNavigationContext";
@@ -47,8 +47,13 @@ export const Header = async () => {
               </Link>
             </div>
 
-            <ProductsNavigationContextProvider initialProducts={sortedProducts}>
-              <MobileWrapper navItems={settings.data.navigation_link} />
+            <ProductsNavigationContextProvider
+              initialProducts={sortedProducts}
+              buttonLink={settings.data.buttonlink}
+            >
+              <NavigationClientWrapper
+                navItems={settings.data.navigation_link}
+              />
             </ProductsNavigationContextProvider>
 
             {/* Contact Button */}

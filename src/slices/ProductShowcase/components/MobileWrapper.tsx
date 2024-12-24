@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { ProductCard } from "@/app/components/products/ProductCard";
+import { ProductShowcaseSlider } from "./ProductShowcaseSlider";
 import { MobileSkeleton, DesktopSkeleton } from "./skeletons";
 import { useClientPendingUI } from "@/app/lib/hooks/useClientPendingUI";
-import { ProductDocument } from "@/prismicio-types";
-import { ProductShowcaseSlider } from "./ProductShowcaseSlider";
+import type { ProductDocument } from "@/prismicio-types";
 
 type MobileWrapperProps = {
   products: ProductDocument[];

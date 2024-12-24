@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Navigation } from ".";
 import { HamburguerMenuButton } from "./HamburguerMenuButton";
 
@@ -12,7 +12,9 @@ type MobileWrapperProps = {
   navItems: SettingsDocumentData["navigation_link"];
 };
 
-export const MobileWrapper: React.FC<MobileWrapperProps> = ({ navItems }) => {
+export const NavigationClientWrapper: React.FC<MobileWrapperProps> = ({
+  navItems,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDesktop = useBreakpoint("(min-width: 768px)");
 
@@ -22,9 +24,9 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({ navItems }) => {
     }
   }, [isDesktop]);
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
-  };
+  }, []);
 
   return (
     <>

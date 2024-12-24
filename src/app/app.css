@@ -84,7 +84,7 @@
     /* Remove gral focus */
     @apply focus:outline-none;
     /* Apply focus-visible for accesibility */
-    @apply focus-visible:ring-red-primary-active focus-visible:outline-none focus-visible:ring-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary-active;
   }
 
   .cta-secondary {
@@ -94,7 +94,7 @@
     /* Remove gral focus */
     @apply focus:outline-none;
     /* Apply focus-visible for accesibility */
-    @apply focus-visible:ring-black-active focus-visible:outline-none focus-visible:ring-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black-active;
   }
 
   .product-card-image {
@@ -333,7 +333,6 @@
   .center-absolute {
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
   }
 

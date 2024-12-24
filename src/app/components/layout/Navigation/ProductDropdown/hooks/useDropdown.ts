@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useBreakpoint } from "@/app/lib/hooks/useBreakpoint";
 
 export const useDropdown = () => {
@@ -6,25 +6,25 @@ export const useDropdown = () => {
 
   const isDesktop = useBreakpoint("(min-width: 768px)");
 
-  const handleDropdownOpen = () => {
+  const handleDropdownOpen = useCallback(() => {
     if (isDesktop) {
       setIsDropdownOpen(true);
     }
-  };
+  }, [isDesktop]);
 
-  const handleDropdownClose = () => {
+  const handleDropdownClose = useCallback(() => {
     setIsDropdownOpen(false);
-  };
+  }, []);
 
-  const toggleDropdown = () => {
+  const toggleDropdown = useCallback(() => {
     if (!isDesktop) {
       setIsDropdownOpen((prev) => !prev);
     }
-  };
+  }, [isDesktop]);
 
   useEffect(() => {
     handleDropdownClose();
-  }, [isDesktop]);
+  }, [isDesktop, handleDropdownClose]);
 
   return {
     isDesktop,

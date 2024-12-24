@@ -98,6 +98,7 @@ module.exports = {
       boxShadow: {
         cta: "var(--cta-shadow)",
         "product-dropdown": "var(--product-dropdown-box-shadow)",
+        "nav-mobile-cta": "0px -1px 42.8px 0px #0000001A",
       },
       transitionProperty: {
         menu: "opacity, transform",
