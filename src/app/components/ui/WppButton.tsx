@@ -13,7 +13,7 @@ export const WppButton = () => {
     >
       <WhatsappIcon />
 
-      <span className="font-src-sans text-lg font-semibold text-white">
+      <span className="font-src-sans text-base font-semibold text-white">
         Cotizá tu pedido
       </span>
     </a>
