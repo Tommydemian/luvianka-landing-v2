@@ -374,3 +374,11 @@
     padding: 1em 1.5em;
   }
 }
+
+@layer utilities {
+  .fixed-bottom-dvh-5 {
+    position: fixed;
+    bottom: 3dvh;
+    right: 3dvh;
+  }
+}

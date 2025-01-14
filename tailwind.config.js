@@ -99,6 +99,8 @@ module.exports = {
         cta: "var(--cta-shadow)",
         "product-dropdown": "var(--product-dropdown-box-shadow)",
         "nav-mobile-cta": "0px -1px 42.8px 0px #0000001A",
+        "wspp-link":
+          "0 1px 6px 0 rgba(0, 0, 0, .06), 0 2px 32px 0 rgba(0, 0, 0, .16)",
       },
       transitionProperty: {
         menu: "opacity, transform",
