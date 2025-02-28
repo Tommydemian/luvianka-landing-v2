@@ -46,7 +46,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({
         }}
       />
 
-      {ctaLink?.map((link) => <CTA key={link.key} field={link} />)}
+      {/* {ctaLink?.map((link) => <CTA key={link.key} field={link} />)} */}
     </div>
   );
 };
