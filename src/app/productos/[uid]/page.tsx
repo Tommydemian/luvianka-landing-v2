@@ -13,42 +13,50 @@ import { sortProducts } from "@/app/lib/utils/sortProducts";
 type Params = Promise<{ uid: string }>;
 
 export default async function Page({ params }: { params: Params }) {
-  const client = createClient();
-  const { uid } = await params;
+	const client = createClient();
+	const { uid } = await params;
 
-  const [page, products] = await Promise.all([
-    client.getByUID("product", uid),
-    client.getAllByType("product"),
-  ]);
-  const sortedProducts = sortProducts(products);
+	const [page, products] = await Promise.all([
+		client.getByUID("product", uid, {
+			fetchOptions: {
+				next: { revalidate: 3600 },
+			},
+		}),
+		client.getAllByType("product", {
+			fetchOptions: {
+				next: { revalidate: 3600 },
+			},
+		}),
+	]);
+	const sortedProducts = sortProducts(products);
 
-  // Encontramos la categoría activa en el servidor
-  const activeCategory = sortedProducts.find(
-    (product) =>
-      product.data.product_title?.toLowerCase().trim() ===
-      uid.toLowerCase().replace(/-/g, " "),
-  );
+	// Encontramos la categoría activa en el servidor
+	const activeCategory = sortedProducts.find(
+		(product) =>
+			product.data.product_title?.toLowerCase().trim() ===
+			uid.toLowerCase().replace(/-/g, " "),
+	);
 
-  if (!activeCategory) {
-    notFound();
-  }
+	if (!activeCategory) {
+		notFound();
+	}
 
-  return (
-    <section className="container--lg">
-      <Container>
-        <VSpace>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[300px_1fr]">
-            {/* Pasamos solo lo necesario a los componentes client */}
-            <CategoriesSidebar
-              categories={sortedProducts}
-              activeCategory={activeCategory.data.product_title}
-            />
-            <ProductsGrid selectedCategory={activeCategory.data} />
-          </div>
-        </VSpace>
-      </Container>
-    </section>
-  );
+	return (
+		<section className="container--lg">
+			<Container>
+				<VSpace>
+					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[300px_1fr]">
+						{/* Pasamos solo lo necesario a los componentes client */}
+						<CategoriesSidebar
+							categories={sortedProducts}
+							activeCategory={activeCategory.data.product_title}
+						/>
+						<ProductsGrid selectedCategory={activeCategory.data} />
+					</div>
+				</VSpace>
+			</Container>
+		</section>
+	);
 }
 
 // export async function generateMetadata({
@@ -93,10 +101,10 @@ export default async function Page({ params }: { params: Params }) {
 // }
 
 export async function generateStaticParams() {
-  const client = createClient();
-  const categories = await client.getAllByType("product");
+	const client = createClient();
+	const categories = await client.getAllByType("product");
 
-  return categories.map((category) => {
-    return { uid: category.uid };
-  });
+	return categories.map((category) => {
+		return { uid: category.uid };
+	});
 }
