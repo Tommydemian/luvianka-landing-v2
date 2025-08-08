@@ -12,6 +12,15 @@ const forwardEmails = {
 };
 export async function POST(req: Request) {
 	try {
+		// Debug env vars in production
+		console.log("=== PRODUCTION DEBUG ===");
+		console.log("NODE_ENV:", process.env.NODE_ENV);
+		console.log("EMAIL_FROM:", process.env.EMAIL_FROM);
+		console.log("EMAIL_USER:", process.env.EMAIL_USER);
+		console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
+		console.log("Has EMAIL_PASS:", !!process.env.EMAIL_PASS);
+		console.log("========================");
+
 		const formData = await req.formData();
 
 		const date = new Date();
@@ -32,9 +41,9 @@ export async function POST(req: Request) {
 
 		// Create transporter
 		const transporter = nodemailer.createTransport({
-			host: process.env.EMAIL_HOST,
-			port: Number.parseInt(process.env.EMAIL_PORT || "587"),
-			secure: process.env.EMAIL_SECURE === "true",
+			service: "Outlook365",
+			// port: Number.parseInt(process.env.EMAIL_PORT || "587"),
+			// secure: process.env.EMAIL_SECURE === "true",
 			auth: {
 				user: process.env.EMAIL_USER,
 				pass: process.env.EMAIL_PASS,
@@ -234,18 +243,11 @@ export async function POST(req: Request) {
 			replyTo: email,
 		};
 
-		console.log("Email being sent:", {
-			from: mailOptions.from,
-			to: mailOptions.to,
-			subject: mailOptions.subject,
-			hasAttachment: attachments.length > 0,
-		});
-
 		// Send email
 		await transporter.sendMail(mailOptions);
 
-		// Clean up file if it exists
 		if (filePath) {
+			// Clean up file if it exists
 			await unlink(filePath);
 		}
 
