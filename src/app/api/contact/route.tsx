@@ -13,13 +13,6 @@ const forwardEmails = {
 export async function POST(req: Request) {
 	try {
 		// Debug env vars in production
-		console.log("=== PRODUCTION DEBUG ===");
-		console.log("NODE_ENV:", process.env.NODE_ENV);
-		console.log("EMAIL_FROM:", process.env.EMAIL_FROM);
-		console.log("EMAIL_USER:", process.env.EMAIL_USER);
-		console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
-		console.log("Has EMAIL_PASS:", !!process.env.EMAIL_PASS);
-		console.log("========================");
 
 		const formData = await req.formData();
 
@@ -49,6 +42,10 @@ export async function POST(req: Request) {
 				pass: process.env.EMAIL_PASS,
 			},
 		});
+		console.log("=== PRODUCTION DEBUG ===");
+		console.log("EMAIL_USER:", process.env.EMAIL_USER);
+		console.log("EMAIL_HOST:", process.env.EMAIL_PASS);
+		console.log("========================");
 
 		// Handle file attachment if it exists
 		const attachments = [];
