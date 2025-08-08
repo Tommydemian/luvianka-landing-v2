@@ -231,7 +231,7 @@ export async function POST(req: Request) {
     </div>
 	`,
 			attachments,
-			replyto: email,
+			replyTo: email,
 		};
 
 		console.log("Email being sent:", {
